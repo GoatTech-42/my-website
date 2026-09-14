@@ -8,8 +8,14 @@ Redesigned for the 5th time!
 <br/>
 <br/>
   
-<a href="https://lukeevanson.com">The Site</a>
+<a href="https://lukeevanson.com">The Site</a> |
 <a href="https://github.com/GoatTech-42/my-website/issues">Issues</a>
 </p>
 </div>
+
+### Built With
+
+- [HTML](https://html.spec.whatwg.org/)
+- [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
+- [JS](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
