@@ -1,1 +1,15 @@
-### My Website
+<br/>
+<div align="center">
+<img src="https://iili.io/nBmB74a.png" alt="Logo" width="80" height="80">
+</a>
+<h3 align="center">My Website</h3>
+<p align="center">
+Redesigned for the 5th time!
+<br/>
+<br/>
+  
+<a href="https://lukeevanson.com">The Site</a>
+<a href="https://github.com/GoatTech-42/my-website/issues">Issues</a>
+</p>
+</div>
+
