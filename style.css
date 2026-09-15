@@ -21,7 +21,6 @@ body {
     padding: 20px;
 }
 
-.terminal h3,
-.terminal p {
+.terminal h3, .terminal p {
     margin: 0;
 }

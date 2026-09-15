@@ -1,3 +1,6 @@
+const season = getSeason();
+const terminal = document.querySelector('.terminal');
+
 function getSeason(date = new Date()) {
     const month = date.getMonth();
     if (month === 11 || month <= 1) {
@@ -10,9 +13,6 @@ function getSeason(date = new Date()) {
         return 'autumn';
     }
 }
-
-const season = getSeason();
-const terminal = document.querySelector('.terminal');
 
 if (season === 'winter') {
     terminal.style.borderImage = 'linear-gradient(to bottom, #54aaff, #3097ff) 1';
