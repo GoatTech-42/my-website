@@ -10,7 +10,7 @@ body {
     justify-content: center;
 }
 
-.container {
+.terminal {
     display: flex;
     justify-content: left;
     height: 50vh;
