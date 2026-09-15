@@ -5,11 +5,17 @@ body {
     background-color: #000000;
     color: #fff;
     font-family: 'Noto Sans', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .container {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;      
+    justify-content: left;
+    height: 50vh;
+    width: 50vw;     
+    margin: auto;
+    border: 3px solid #33FF33; 
+    padding: 20px;
 }
