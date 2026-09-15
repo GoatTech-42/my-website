@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Cascadia+Mono:ital,wght@0,200..700;1,200..700&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 body {
     background-color: #000000;
     color: #fff;
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Cascadia Mono', sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,10 +11,17 @@ body {
 
 .terminal {
     display: flex;
+    flex-direction: column;
     justify-content: left;
     height: 50vh;
     width: 50vw;     
     margin: auto;
-    border: 3px solid #33FF33; 
+    border: 3px solid;
+    border-radius: 5px;
     padding: 20px;
+}
+
+.terminal h3,
+.terminal p {
+    margin: 0;
 }

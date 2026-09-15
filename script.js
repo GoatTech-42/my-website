@@ -15,15 +15,15 @@ const season = getSeason();
 const terminal = document.querySelector('.terminal');
 
 if (season === 'winter') {
-    terminal.style.borderColor = 'blue';
+    terminal.style.borderImage = 'linear-gradient(to bottom, #54aaff, #3097ff) 1';
     terminal.style.color = 'blue';
 } else if (season === 'spring') {
-    terminal.style.borderColor = 'green';
+    terminal.style.borderImage = 'linear-gradient(to bottom, #58ff58, #30ff30) 1';
     terminal.style.color = 'green';
 } else if (season === 'summer') {
-    terminal.style.borderColor = 'yellow';
+    terminal.style.borderImage = 'linear-gradient(to bottom, #ffff4b, #ffff32) 1';
     terminal.style.color = 'yellow';
 } else {
-    terminal.style.borderColor = 'orange';
+    terminal.style.borderImage = 'linear-gradient(to bottom, #ffb03a, #ff9a34) 1';
     terminal.style.color = 'orange';
 }
