@@ -24,3 +24,8 @@ body {
 .terminal h3, .terminal p {
     margin: 0;
 }
+
+.copyright {
+    color: white;
+    font-family: 'Noto Sans', sans-serif;
+}
