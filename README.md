@@ -19,3 +19,7 @@ Redesigned for the 5th time!
 - [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
 - [JS](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
+<br/>
+<br/>
+<h5 align="center">No AI Used</h3>
+
