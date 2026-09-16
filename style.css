@@ -72,3 +72,18 @@ body {
 .submit {
     display: none;
 }
+
+.output {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    margin: 0;
+    letter-spacing: .05em;
+}
+
+.output-cursor {
+    animation: blink-cursor .75s step-end infinite;
+}
+
+@keyframes blink-cursor {
+    50% { opacity: 0; }
+}

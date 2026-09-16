@@ -4,6 +4,7 @@ const cmdOutput = document.getElementById('output')
 const cmdInput = document.getElementById('cmdInput');
 const blinkingSpan = document.getElementById('blink');
 const commandForm = document.getElementById('commandForm');
+let typingTimer;
 
 
 
@@ -51,6 +52,23 @@ commandForm.addEventListener('submit', function(event) {
 
 function cmdSubmit() {
     if (cmdInput.value === 'help') {
-        cmdOutput.innerHTML = 'No commands yet cause like this is a beta yk';
+        typeOutput('No commands yet cause like this is a beta yk');
     }
+}
+
+function typeOutput(text) {
+    clearInterval(typingTimer);
+    cmdOutput.innerHTML = '<span class="typed-text"></span><span class="output-cursor">_</span>';
+
+    const typedText = cmdOutput.querySelector('.typed-text');
+    let characterIndex = 0;
+
+    typingTimer = setInterval(function() {
+        typedText.textContent += text[characterIndex];
+        characterIndex += 1;
+
+        if (characterIndex === text.length) {
+            clearInterval(typingTimer);
+        }
+    }, 50);
 }
