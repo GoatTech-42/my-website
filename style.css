@@ -44,3 +44,18 @@ body {
     font-family: 'Cascadia Mono', sans-serif;
     font-size: 14px;
 }
+
+.blink {
+  font-weight: bold;
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.hidden {
+  display: none;
+}

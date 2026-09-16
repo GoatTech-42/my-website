@@ -1,5 +1,10 @@
 const season = getSeason();
 const terminal = document.querySelector('.terminal');
+const cmdOutput = document.getElementById('output')
+const cmdInput = document.getElementById('cmdInput');
+const blinkingSpan = document.getElementById('blink');
+
+
 
 function getSeason(date = new Date()) {
     const month = date.getMonth();
@@ -27,3 +32,13 @@ if (season === 'winter') {
     terminal.style.borderImage = 'linear-gradient(to bottom, #ffb03a, #ff9a34) 1';
     terminal.style.color = 'orange';
 }
+
+cmdInput.addEventListener('click', function() {
+    blinkingSpan.classList.add('hidden');
+});
+
+cmdInput.addEventListener('blur', function() {
+    if (cmdInput.value.trim() === '') {
+        blinkingSpan.classList.remove('hidden');
+    }
+});
