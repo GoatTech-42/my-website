@@ -85,7 +85,13 @@ body {
     animation: blink-cursor .75s step-end infinite;
 }
 
+.output strong {
+  font-weight: 700;
+}
+
 @keyframes blink-cursor {
     50% { opacity: 0; }
 }
+
+
 

@@ -55,24 +55,47 @@ function typeOutput(text) {
     cmdOutput.innerHTML = '<span class="typed-text"></span><span class="output-cursor">_</span>';
 
     const typedText = cmdOutput.querySelector('.typed-text');
-    let characterIndex = 0;
+    const template = document.createElement('template');
+    template.innerHTML = text;
+    typedText.appendChild(template.content.cloneNode(true));
+
+    const textNodes = [];
+    const walker = document.createTreeWalker(typedText, NodeFilter.SHOW_TEXT);
+    let currentNode;
+
+    while (currentNode = walker.nextNode()) {
+        textNodes.push({
+            node: currentNode,
+            text: currentNode.textContent,
+            index: 0
+        });
+        currentNode.textContent = '';
+    }
+
+    let nodeIndex = 0;
 
     typingTimer = setInterval(function() {
-        typedText.textContent += text[characterIndex];
-        characterIndex += 1;
-
-        if (characterIndex === text.length) {
+        if (nodeIndex === textNodes.length) {
             clearInterval(typingTimer);
+            return;
+        }
+
+        const currentTextNode = textNodes[nodeIndex];
+        currentTextNode.node.textContent += currentTextNode.text[currentTextNode.index];
+        currentTextNode.index += 1;
+
+        if (currentTextNode.index === currentTextNode.text.length) {
+            nodeIndex += 1;
         }
     }, 50);
 }
 
 function cmdSubmit() {
     if (cmdInput.value === 'help') {
-        typeOutput('Commands: help (you hopefully know this one), projects,');
+        typeOutput('<strong>commands:</strong><br>help<br/>projects<br/><br/><strong>you can type the help command and then the command you want to know more about for a description.');
     } else if (cmdInput.value === 'projects') {
-        typeOutput('Projects')
+        typeOutput('')
     } else {
-        typeOutput('Unknown command. Type "help" for the list!');
+        typeOutput('unknown command. type "help" for the list!');
     }
 }
