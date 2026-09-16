@@ -48,7 +48,6 @@ body {
     background-color:#000000;
     border: none;
     outline: none;
-    color: orange;
     font-family: 'Cascadia Mono', sans-serif;
     font-size: 14px;
   flex: 1;
@@ -93,5 +92,8 @@ body {
     50% { opacity: 0; }
 }
 
+a {
+  color: inherit;
+}
 
 
