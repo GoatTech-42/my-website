@@ -50,12 +50,6 @@ commandForm.addEventListener('submit', function(event) {
     cmdSubmit();
 });
 
-function cmdSubmit() {
-    if (cmdInput.value === 'help') {
-        typeOutput('No commands yet cause like this is a beta yk');
-    }
-}
-
 function typeOutput(text) {
     clearInterval(typingTimer);
     cmdOutput.innerHTML = '<span class="typed-text"></span><span class="output-cursor">_</span>';
@@ -71,4 +65,14 @@ function typeOutput(text) {
             clearInterval(typingTimer);
         }
     }, 50);
+}
+
+function cmdSubmit() {
+    if (cmdInput.value === 'help') {
+        typeOutput('Commands: help (you hopefully know this one), projects,');
+    } else if (cmdInput.value === 'projects') {
+        typeOutput('Projects')
+    } else {
+        typeOutput('Unknown command. Type "help" for the list!');
+    }
 }
