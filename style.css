@@ -31,6 +31,13 @@ body {
         font-size: 14px;
 }
 
+.command-line {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  font-size: 14px;
+}
+
 .copyright {
     color: white;
     font-family: 'Noto Sans', sans-serif;
@@ -43,6 +50,8 @@ body {
     color: orange;
     font-family: 'Cascadia Mono', sans-serif;
     font-size: 14px;
+  flex: 1;
+  min-width: 0;
 }
 
 .blink {
@@ -58,4 +67,8 @@ body {
 
 .hidden {
   display: none;
+}
+
+.submit {
+    display: none;
 }

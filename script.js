@@ -3,6 +3,7 @@ const terminal = document.querySelector('.terminal');
 const cmdOutput = document.getElementById('output')
 const cmdInput = document.getElementById('cmdInput');
 const blinkingSpan = document.getElementById('blink');
+const commandForm = document.getElementById('commandForm');
 
 
 
@@ -42,3 +43,14 @@ cmdInput.addEventListener('blur', function() {
         blinkingSpan.classList.remove('hidden');
     }
 });
+
+commandForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    cmdSubmit();
+});
+
+function cmdSubmit() {
+    if (cmdInput.value === 'help') {
+        cmdOutput.innerHTML = 'No commands yet cause like this is a beta yk';
+    }
+}
