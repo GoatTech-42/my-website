@@ -19,13 +19,28 @@ body {
     border: 3px solid;
     border-radius: 5px;
     padding: 20px;
+    font-size: 12px;
 }
 
 .terminal h3, .terminal p {
     margin: 0;
+    font-size: 24px;
+}
+
+.terminal p {
+        font-size: 14px;
 }
 
 .copyright {
     color: white;
     font-family: 'Noto Sans', sans-serif;
+}
+
+.cmdinput {
+    background-color:#000000;
+    border: none;
+    outline: none;
+    color: orange;
+    font-family: 'Cascadia Mono', sans-serif;
+    font-size: 14px;
 }
