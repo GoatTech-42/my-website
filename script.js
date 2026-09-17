@@ -99,7 +99,7 @@ function cmdSubmit() {
     if (cmdInput.value === 'help') {
         typeOutput('<strong>commands:</strong><br>help<br/>projects<br/><br/><strong>you can type the help command and then the command you want to know more about for a description.');
     } else if (cmdInput.value === 'projects') {
-        typeOutput('<strong>projects:</strong><br/>this website! <a href="https://github.com/GoatTech-42/my-website" target="_blank">github</a>')
+        typeOutput('<strong>projects:</strong><br/>this website! <a href="https://github.com/GoatTech-42/my-website" target="_blank">github</a><br/>mc headless <a href="https://github.com/GoatTech-42/mc-headless" target="_blank">github</a><br/>nebula v2 <a href="https://github.com/GoatTech-42/NEBULA-V2"')
     } else {
         typeOutput('unknown command. type "help" for the list!');
     }
