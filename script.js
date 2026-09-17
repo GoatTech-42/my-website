@@ -99,7 +99,17 @@ function cmdSubmit() {
     if (cmdInput.value === 'help') {
         typeOutput('<strong>commands:</strong><br>help<br/>projects<br/><br/><strong>you can type the help command and then the command you want to know more about for a description.');
     } else if (cmdInput.value === 'projects') {
-        typeOutput('<strong>projects:</strong><br/>this website! <a href="https://github.com/GoatTech-42/my-website" target="_blank">github</a><br/>mc headless <a href="https://github.com/GoatTech-42/mc-headless" target="_blank">github</a><br/>nebula v2 <a href="https://github.com/GoatTech-42/NEBULA-V2"')
+        typeOutput('<strong>projects:</strong><br/>this website! <a href="https://github.com/GoatTech-42/my-website" target="_blank">github</a><br/>mc headless <a href="https://github.com/GoatTech-42/mc-headless" target="_blank">github</a><br/>nebula v2 <a href="https://github.com/GoatTech-42/NEBULA-V2" target="_blank">github</a>');
+    } else if (cmdInput.value === 'ping') {
+        typeOutput('pong');
+    } else if (cmdInput.value === 'pong') {
+        typeOutput('hell no');
+    } else if (cmdInput.value === 'help projects') {
+        typeOutput('this command shows my projects what did you think it did')
+    } else if (cmdInput.value === 'help help') {
+        typeOutput('ur not funny lil bro')
+    } else if (cmdInput.value === '67') {
+        typeOutput('genuinely leave this planet and never return')
     } else {
         typeOutput('unknown command. type "help" for the list!');
     }
