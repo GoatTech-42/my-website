@@ -11,6 +11,7 @@ const particleNumber = 75;
 const particleImage = new Image();
 let typingTimer;
 let animationStarted = false;
+typeOutput('welcome to goat cmd')
 
 function getSeason(date = new Date()) {
     const month = date.getMonth();
@@ -208,7 +209,7 @@ function cmdSubmit() {
         applySeason('autumn');
         typeOutput('fall mode');
     } else if (command === 'help') {
-        typeOutput('<strong>commands:</strong><br>help<br/>projects<br/><br/><strong>you can type the help command and then the command you want to know more about for a description.');
+        typeOutput('<strong>commands:</strong><br>help<br/>projects<br/>about<br/>42<br/>jesus<br/><strong>you can type the help command and then the command you want to know more about for a description.');
     } else if (command === 'projects') {
         typeOutput('<strong>projects:</strong><br/>this website! <a href="https://github.com/GoatTech-42/my-website" target="_blank">github</a><br/>mc headless <a href="https://github.com/GoatTech-42/mc-headless" target="_blank">github</a><br/>nebula v2 <a href="https://github.com/GoatTech-42/NEBULA-V2" target="_blank">github</a>');
     } else if (command === 'ping') {
@@ -221,8 +222,22 @@ function cmdSubmit() {
         typeOutput('ur not funny lil bro')
     } else if (command === '67') {
         typeOutput('genuinely leave this planet and never return')
-    } else {
-        typeOutput('unknown command. type "help" for the list!');
+    } else if (command === 'help help') {
+        typeOutput('ur not funny lil bro')
+    } else if (command === 'about') {
+        typeOutput('hi, im luke. i like to code and do <a href="https://hackclub.com" target="_blank">hack club</a>. this is my website, made for <a href="https://thirdspace.hackclub.com" target="_blank">third space</a>. this website is mainly to showcase my *main* projects, skills, and general porfolio. i dont know how much ill update the projects section, but my <a href="https://github.com/GoatTech-42" target="_blank">github</a> is where you can get uptodate stuff. this website is coded in html, css, and js. ive been trying to learn them better.')
+    } else if (command === 'help about') {
+        typeOutput('this command tells you about me and about this website.')
+    } else if (command === '42') {
+        typeOutput('best number btw<br/>if you know you know')
+    } else if (command === 'help help') {
+        typeOutput('ur not funny lil bro')
+    } else if (command === 'help 42') {
+        typeOutput('just try it')
+    } else if (command === 'help jesus') {
+        typeOutput('jesus saves nothing else to it')
+    } else if (command === 'jesus') {
+        typeOutput('saves');
     }
 }
 
