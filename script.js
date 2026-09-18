@@ -11,6 +11,26 @@ const particleNumber = 75;
 const particleImage = new Image();
 let typingTimer;
 let animationStarted = false;
+let nebulaGames = [];
+const nebulaSources = [
+    {
+        catalog: 'https://cdn.jsdelivr.net/gh/GoatTech-42/NEBULA-CDN@main/games.json',
+        base: 'https://cdn.jsdelivr.net/gh/GoatTech-42/NEBULA-CDN@main'
+    },
+    {
+        catalog: 'https://raw.githubusercontent.com/GoatTech-42/NEBULA-CDN/main/games.json',
+        base: 'https://raw.githubusercontent.com/GoatTech-42/NEBULA-CDN/main'
+    },
+    {
+        catalog: 'https://cdn.jsdelivr.net/gh/Nos-and-Stealzers/NEBULA-CDN@main/games.json',
+        base: 'https://cdn.jsdelivr.net/gh/Nos-and-Stealzers/NEBULA-CDN@main'
+    },
+    {
+        catalog: 'https://raw.githubusercontent.com/Nos-and-Stealzers/NEBULA-CDN/main/games.json',
+        base: 'https://raw.githubusercontent.com/Nos-and-Stealzers/NEBULA-CDN/main'
+    }
+];
+let nebulaSource = nebulaSources[0];
 typeOutput('hello, welcome to goat cmd. try some commands!')
 
 function getSeason(date = new Date()) {
@@ -119,6 +139,114 @@ function typeOutput(text) {
             nodeIndex += 1;
         }
     }, 50);
+}
+
+async function loadNebula() {
+    const browser = document.getElementById('nebulacdn');
+    browser.style.display = 'block';
+    browser.innerHTML = '<input class="nebula-search" type="search" placeholder="search games..." aria-label="Search games"><div class="nebula-list">loading games...</div>';
+
+    try {
+        let catalog;
+        let lastError;
+
+        for (const source of nebulaSources) {
+            try {
+                const response = await fetch(source.catalog);
+                if (!response.ok) {
+                    throw new Error(`Catalog request failed: ${response.status}`);
+                }
+
+                catalog = await response.json();
+                nebulaSource = source;
+                break;
+            } catch (error) {
+                lastError = error;
+            }
+        }
+
+        if (!catalog) {
+            throw lastError || new Error('Could not load the game catalog');
+        }
+
+        nebulaGames = catalog.games || [];
+        const search = browser.querySelector('.nebula-search');
+        const list = browser.querySelector('.nebula-list');
+
+        function renderGames(query = '') {
+            const normalizedQuery = query.trim().toLowerCase();
+            const games = nebulaGames
+                .filter(game => game.name.toLowerCase().includes(normalizedQuery))
+                .slice(0, 40);
+
+            list.replaceChildren();
+
+            if (games.length === 0) {
+                list.textContent = 'no games found';
+                return;
+            }
+
+            games.forEach(game => {
+                const button = document.createElement('button');
+                button.className = 'nebula-game';
+                button.type = 'button';
+                button.textContent = game.name;
+                button.addEventListener('click', () => launchNebulaGame(game));
+                list.appendChild(button);
+            });
+        }
+
+        search.addEventListener('input', () => renderGames(search.value));
+        renderGames();
+    } catch (error) {
+        browser.textContent = 'could not load games';
+        console.error(error);
+    }
+}
+
+async function launchNebulaGame(game) {
+    const gameWindow = window.open('about:blank', '_blank');
+
+    if (!gameWindow) {
+        typeOutput('allow popups to launch a game');
+        return;
+    }
+
+    gameWindow.document.write('<p>loading game...</p>');
+
+    try {
+        let gameCode;
+        let gameUrl;
+        let lastError;
+        const sources = [nebulaSource, ...nebulaSources.filter(source => source !== nebulaSource)];
+
+        for (const source of sources) {
+            try {
+                gameUrl = `${source.base}/${game.file}`;
+                const response = await fetch(gameUrl);
+                if (!response.ok) {
+                    throw new Error(`Game request failed: ${response.status}`);
+                }
+
+                gameCode = await response.text();
+                break;
+            } catch (error) {
+                lastError = error;
+            }
+        }
+
+        if (!gameCode) {
+            throw lastError || new Error('Could not load the selected game');
+        }
+
+        const baseUrl = gameUrl.slice(0, gameUrl.lastIndexOf('/') + 1);
+        gameWindow.document.open();
+        gameWindow.document.write(gameCode.replace('<head>', `<head><base href="${baseUrl}">`));
+        gameWindow.document.close();
+    } catch (error) {
+        gameWindow.document.body.textContent = 'could not load this game';
+        console.error(error);
+    }
 }
 
 function resizeCanvas() {
@@ -243,6 +371,9 @@ function cmdSubmit() {
         typeOutput('jesus saves nothing else to it')
     } else if (command === 'jesus') {
         typeOutput('saves');
+    } else if (command === 'nebulaaa') {
+        typeOutput('congrats bro now your bum ahh can play unblocked games in class');
+        loadNebula();
     }
 }
 
