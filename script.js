@@ -11,7 +11,7 @@ const particleNumber = 75;
 const particleImage = new Image();
 let typingTimer;
 let animationStarted = false;
-typeOutput('welcome to goat cmd')
+typeOutput('hello, welcome to goat cmd. try some commands!')
 
 function getSeason(date = new Date()) {
     const month = date.getMonth();
@@ -33,21 +33,25 @@ function applySeason(newSeason) {
         winter: {
             border: 'linear-gradient(to bottom, #54aaff, #3097ff) 1',
             color: 'blue',
+            glow: 'rgba(77, 166, 255, 0.9)',
             particle: 'particles/winterleaf.png'
         },
         spring: {
             border: 'linear-gradient(to bottom, #58ff58, #30ff30) 1',
             color: 'green',
+            glow: 'rgba(77, 255, 77, 0.9)',
             particle: 'particles/springleaf.png'
         },
         summer: {
             border: 'linear-gradient(to bottom, #ffff4b, #ffff32) 1',
             color: 'yellow',
+            glow: 'rgba(255, 255, 50, 0.9)',
             particle: 'particles/summerleaf.png'
         },
         autumn: {
             border: 'linear-gradient(to bottom, #ffb03a, #ff9a34) 1',
             color: 'orange',
+            glow: 'rgba(255, 166, 77, 0.9)',
             particle: 'particles/fallleaf.png'
         }
     };
@@ -55,6 +59,7 @@ function applySeason(newSeason) {
     const style = seasonStyles[newSeason];
     terminal.style.borderImage = style.border;
     terminal.style.setProperty('--season-color', style.color);
+    terminal.style.setProperty('--season-glow', style.glow);
     particleImage.src = style.particle;
 }
 

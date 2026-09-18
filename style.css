@@ -13,6 +13,7 @@ body {
 
 .terminal {
     --season-color: white;
+  --season-glow: rgba(145, 145, 145, 0.9);
     position: relative;
     z-index: 1;
     display: flex;
@@ -27,6 +28,9 @@ body {
     font-size: 12px;
     background-color: #000000;
     color: var(--season-color);
+    -webkit-box-shadow: 0px 0px 105px 3px var(--season-glow);
+    -moz-box-shadow: 0px 0px 105px 3px var(--season-glow);
+    box-shadow: 0px 0px 105px 3px var(--season-glow);
 }
 
 .terminal h3, .terminal p {
