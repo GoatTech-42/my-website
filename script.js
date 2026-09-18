@@ -381,6 +381,8 @@ function cmdSubmit() {
     } else if (command === 'nebulaaa') {
         typeOutput('congrats bro now your bum ahh can play unblocked games in class');
         loadNebula();
+    } else {
+        typeOutput('unknown command. type "help" for the list!');
     }
 }
 
