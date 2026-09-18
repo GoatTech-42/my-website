@@ -191,7 +191,10 @@ async function loadNebula() {
                 button.className = 'nebula-game';
                 button.type = 'button';
                 button.textContent = game.name;
-                button.addEventListener('click', () => launchNebulaGame(game));
+                button.addEventListener('click', () => {
+                    browser.style.display = 'none';
+                    launchNebulaGame(game);
+                });
                 list.appendChild(button);
             });
         }
@@ -328,6 +331,10 @@ particleImage.onload = () => {
 
 function cmdSubmit() {
     const command = cmdInput.value.trim().toLowerCase();
+
+    if (command !== 'nebulaaa') {
+        document.getElementById('nebulacdn').style.display = 'none';
+    }
 
     if (command === 'season winter' || command === 'winter') {
         applySeason('winter');
