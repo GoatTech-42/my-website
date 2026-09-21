@@ -349,7 +349,7 @@ function cmdSubmit() {
         applySeason('autumn');
         typeOutput('fall mode');
     } else if (command === 'help') {
-        typeOutput('<strong>commands:</strong><br>help<br/>projects<br/>about<br/>42<br/>jesus<br/><strong>you can type the help command and then the command you want to know more about for a description.');
+        typeOutput('<strong>commands:</strong><br>help<br/>projects<br/>about<br/>42<br/><strong>you can type the help command and then the command you want to know more about for a description.');
     } else if (command === 'projects') {
         typeOutput('<strong>projects:</strong><br/>this website! <a href="https://github.com/GoatTech-42/my-website" target="_blank">github</a><br/>mc headless <a href="https://github.com/GoatTech-42/mc-headless" target="_blank">github</a><br/>nebula v2 <a href="https://github.com/GoatTech-42/NEBULA-V2" target="_blank">github</a>');
     } else if (command === 'ping') {
@@ -374,8 +374,6 @@ function cmdSubmit() {
         typeOutput('ur not funny lil bro')
     } else if (command === 'help 42') {
         typeOutput('just try it')
-    } else if (command === 'help jesus') {
-        typeOutput('jesus saves nothing else to it')
     } else if (command === 'jesus') {
         typeOutput('saves');
     } else if (command === 'nebulaaa') {
