@@ -21,5 +21,5 @@ Redesigned for the 5th time!
 
 <br/>
 <br/>
-<h5 align="center">No AI Used</h3>
+<h5 align="center">Not Vibecoded!</h3>
 

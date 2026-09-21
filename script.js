@@ -30,6 +30,8 @@ const nebulaSources = [{
     }
 ];
 let nebulaSource = nebulaSources[0];
+const commandHistory = [];
+let historyList = -1;
 typeOutput('hello, welcome to goat cmd. try some commands!')
 
 function getSeason(date = new Date()) {
@@ -51,26 +53,22 @@ function applySeason(newSeason) {
     const seasonStyles = {
         winter: {
             border: 'linear-gradient(to bottom, #54aaff, #3097ff) 1',
-            color: 'blue',
-            glow: 'rgba(77, 166, 255, 0.9)',
+            color: '#54aaff',
             particle: 'particles/winterleaf.png'
         },
         spring: {
             border: 'linear-gradient(to bottom, #58ff58, #30ff30) 1',
-            color: 'green',
-            glow: 'rgba(77, 255, 77, 0.9)',
+            color: '#58ff58',
             particle: 'particles/springleaf.png'
         },
         summer: {
             border: 'linear-gradient(to bottom, #ffff4b, #ffff32) 1',
-            color: 'yellow',
-            glow: 'rgba(255, 255, 50, 0.9)',
+            color: '#ffff4b',
             particle: 'particles/summerleaf.png'
         },
         autumn: {
             border: 'linear-gradient(to bottom, #ffb03a, #ff9a34) 1',
-            color: 'orange',
-            glow: 'rgba(255, 166, 77, 0.9)',
+            color: '#ffb03a',
             particle: 'particles/fallleaf.png'
         }
     };
@@ -78,19 +76,43 @@ function applySeason(newSeason) {
     const style = seasonStyles[newSeason];
     terminal.style.borderImage = style.border;
     terminal.style.setProperty('--season-color', style.color);
-    terminal.style.setProperty('--season-glow', style.glow);
     particleImage.src = style.particle;
 }
 
 applySeason(season);
 
-cmdInput.addEventListener('click', function() {
-    blinkingSpan.classList.add('hidden');
-});
+function updatePromptCaret() {
+    const shouldShowPrompt = cmdInput.value.trim() === '';
+    blinkingSpan.classList.toggle('hidden', !shouldShowPrompt);
+}
 
-cmdInput.addEventListener('blur', function() {
-    if (cmdInput.value.trim() === '') {
-        blinkingSpan.classList.remove('hidden');
+cmdInput.addEventListener('focus', updatePromptCaret);
+cmdInput.addEventListener('input', updatePromptCaret);
+cmdInput.addEventListener('blur', updatePromptCaret);
+
+cmdInput.addEventListener('keydown', function(event) {
+    if (event.key === 'ArrowUp') {
+        event.preventDefault();
+
+        if (historyList > 0) {
+            historyList -= 1;
+            cmdInput.value = commandHistory[historyList];
+            updatePromptCaret();
+        }
+    }
+
+    if (event.key === 'ArrowDown') {
+        event.preventDefault();
+
+        if (historyList < commandHistory.length - 1) {
+            historyList += 1;
+            cmdInput.value = commandHistory[historyList];
+        } else {
+            historyList = commandHistory.length;
+            cmdInput.value = '';
+        }
+
+        updatePromptCaret();
     }
 });
 
@@ -331,9 +353,23 @@ particleImage.onload = () => {
 function cmdSubmit() {
     const command = cmdInput.value.trim().toLowerCase();
 
+    if (command === '') {
+        typeOutput('bro put in a command');
+        cmdInput.value = '';
+        updatePromptCaret();
+        cmdInput.focus();
+        return;
+    }
+
     if (command !== 'nebulaaa') {
         document.getElementById('nebulacdn').style.display = 'none';
     }
+
+    if (commandHistory[commandHistory.length - 1] !== command) {
+        commandHistory.push(command);
+    }
+    historyList = commandHistory.length;
+
     if (command === 'season winter' || command === 'winter') {
         applySeason('winter');
         typeOutput('winter mode');
@@ -349,29 +385,25 @@ function cmdSubmit() {
     } else if (command === 'help') {
         typeOutput('<strong>commands:</strong><br>help<br/>projects<br/>about<br/>42<br/><strong>you can type the help command and then the command you want to know more about for a description.');
     } else if (command === 'projects') {
-        typeOutput('<strong>projects:</strong><br/>this website! <a href="https://github.com/GoatTech-42/my-website" target="_blank">github</a><br/>mc headless <a href="https://github.com/GoatTech-42/mc-headless" target="_blank">github</a><br/>nebula v2 <a href="https://github.com/GoatTech-42/NEBULA-V2" target="_blank">github</a>');
+        typeOutput('<strong>projects:</strong><br/>this website! <a href="https://github.com/GoatTech-42/my-website" target="_blank" rel="noopener noreferrer">github</a><br/>mc headless <a href="https://github.com/GoatTech-42/mc-headless" target="_blank" rel="noopener noreferrer">github</a><br/>nebula v2 <a href="https://github.com/GoatTech-42/NEBULA-V2" target="_blank" rel="noopener noreferrer">github</a>');
     } else if (command === 'ping') {
         typeOutput('pong');
     } else if (command === 'pong') {
         typeOutput('hell no');
     } else if (command === 'help projects') {
-        typeOutput('this command shows my projects what did you think it did')
+        typeOutput('this command shows my projects what did you think it did');
     } else if (command === 'help help') {
-        typeOutput('ur not funny lil bro')
+        typeOutput('ur not funny lil bro');
     } else if (command === '67') {
-        typeOutput('genuinely leave this planet and never return')
-    } else if (command === 'help help') {
-        typeOutput('ur not funny lil bro')
+        typeOutput('genuinely leave this planet and never return');
     } else if (command === 'about') {
-        typeOutput('hi, im luke. i like to code and do <a href="https://hackclub.com" target="_blank">hack club</a>. this is my website, made for <a href="https://thirdspace.hackclub.com" target="_blank">third space</a>. this website is mainly to showcase my *main* projects, skills, and general porfolio. i dont know how much ill update the projects section, but my <a href="https://github.com/GoatTech-42" target="_blank">github</a> is where you can get uptodate stuff. this website is coded in html, css, and js. ive been trying to learn them better.')
+        typeOutput('hi, im luke. i like to code and do <a href="https://hackclub.com" target="_blank" rel="noopener noreferrer">hack club</a>. this is my website, made for <a href="https://thirdspace.hackclub.com" target="_blank" rel="noopener noreferrer">third space</a>. this website is mainly to showcase my *main* projects, skills, and general porfolio. i dont know how much ill update the projects section, but my <a href="https://github.com/GoatTech-42" target="_blank" rel="noopener noreferrer">github</a> is where you can get uptodate stuff. this website is coded in html, css, and js. ive been trying to learn them better.');
     } else if (command === 'help about') {
-        typeOutput('this command tells you about me and about this website.')
+        typeOutput('this command tells you about me and about this website.');
     } else if (command === '42') {
-        typeOutput('best number btw<br/>if you know you know')
-    } else if (command === 'help help') {
-        typeOutput('ur not funny lil bro')
+        typeOutput('best number btw<br/>if you know you know');
     } else if (command === 'help 42') {
-        typeOutput('just try it')
+        typeOutput('just try it');
     } else if (command === 'jesus') {
         typeOutput('saves');
     } else if (command === 'nebulaaa') {
@@ -379,5 +411,39 @@ function cmdSubmit() {
         loadNebula();
     } else {
         typeOutput('unknown command. type "help" for the list!');
+    }
+
+    cmdInput.value = '';
+    cmdInput.focus();
+    updatePromptCaret();
+}
+
+cmdInput.addEventListener('keydown', function(event) {
+    if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        if (historyList > 0) {
+            historyList--;
+            cmdInput.value = commandHistory[historyList];
+        }
+    }
+    if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        if (historyList < commandHistory.length - 1) {
+            historyList += 1;
+            cmdInput.value = commandHistory[historyList];
+        } else {
+            historyList = commandHistory.length;
+            cmdInput.value = '';
+        }
+    }
+});
+
+function updateUnderscore() {
+    const emptyInput = cmdInput.value.trim() === '';
+
+    if (document.activeElement === cmdInput && !emptyInput) {
+        blinkingSpan.classList.add('hidden');
+    } else if (emptyInput) {
+        blinkingSpan.classList.remove('hidden');
     }
 }
