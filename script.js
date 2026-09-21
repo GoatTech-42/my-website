@@ -389,7 +389,7 @@ function cmdSubmit() {
         applySeason('autumn');
         typeOutput('fall mode');
     } else if (command === 'help') {
-        typeOutput('<strong>commands:</strong><br>help<br/>projects<br/>about<br/>42<br/><strong>you can type the help command and then the command you want to know more about for a description.');
+        typeOutput('<strong>commands:</strong><br>help<br/>projects<br/>about<br/>sources<br/>42<br/><strong>you can type the help command and then the command you want to know more about for a description.');
     } else if (command === 'projects') {
         typeOutput('<strong>projects:</strong><br/>this website! <a href="https://github.com/GoatTech-42/my-website" target="_blank" rel="noopener noreferrer">github</a><br/>mc headless <a href="https://github.com/GoatTech-42/mc-headless" target="_blank" rel="noopener noreferrer">github</a><br/>nebula v2 <a href="https://github.com/GoatTech-42/NEBULA-V2" target="_blank" rel="noopener noreferrer">github</a>');
     } else if (command === 'ping') {
@@ -414,6 +414,12 @@ function cmdSubmit() {
         typeOutput('saves');
     } else if (command === 'goat') {
         typeOutput('goats are cool');
+    } else if (command === 'ai') {
+        typeOutput('i didnt use ai to code this i only used it for suggestions and teaching');
+    } else if (command === 'sources help') {
+        typeOutput('tells you the sources i used to build this website');
+    } else if (command === 'sources') {
+        typeOutput('sources: <br/><a href="https://fonts.google.com/specimen/Cascadia+Mono" target="_blank">google fonts</a><br/>');
     } else if (command === 'particles off') {
         particlesOn = false;
         canvas.style.display = "none";
