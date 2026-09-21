@@ -12,6 +12,7 @@ const particleImage = new Image();
 let typingTimer;
 let animationStarted = false;
 let nebulaGames = [];
+let particlesOn = true;
 const nebulaSources = [{
         catalog: 'https://cdn.jsdelivr.net/gh/GoatTech-42/NEBULA-CDN@main/games.json',
         base: 'https://cdn.jsdelivr.net/gh/GoatTech-42/NEBULA-CDN@main'
@@ -332,6 +333,11 @@ function init() {
 }
 
 function animate() {
+    if (!particlesOn) {
+        requestAnimationFrame(animate);
+        return;
+    }
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     for (let i = 0; i < particleArray.length; i++) {
@@ -406,6 +412,16 @@ function cmdSubmit() {
         typeOutput('just try it');
     } else if (command === 'jesus') {
         typeOutput('saves');
+    } else if (command === 'goat') {
+        typeOutput('goats are cool');
+    } else if (command === 'particles off') {
+        particlesOn = false;
+        canvas.style.display = "none";
+        typeOutput('particles disabled');
+    } else if (command === 'particles on') {
+        particlesOn = true;
+        canvas.style.display = 'block';
+        typeOutput('particles enabled');
     } else if (command === 'nebulaaa') {
         typeOutput('congrats bro now your bum ahh can play unblocked games in class');
         loadNebula();
