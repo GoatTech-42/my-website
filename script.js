@@ -12,8 +12,7 @@ const particleImage = new Image();
 let typingTimer;
 let animationStarted = false;
 let nebulaGames = [];
-const nebulaSources = [
-    {
+const nebulaSources = [{
         catalog: 'https://cdn.jsdelivr.net/gh/GoatTech-42/NEBULA-CDN@main/games.json',
         base: 'https://cdn.jsdelivr.net/gh/GoatTech-42/NEBULA-CDN@main'
     },
@@ -263,7 +262,7 @@ window.addEventListener('resize', resizeCanvas);
 class Particle {
     constructor() {
         this.reset();
-        this.y = Math.random() * canvas.height; 
+        this.y = Math.random() * canvas.height;
     }
     reset() {
         this.size = Math.random() * 20 + 20;
@@ -297,7 +296,7 @@ class Particle {
             particleImage,
             -this.size / 2,
             -this.size / 2,
-            this.size, 
+            this.size,
             this.size
         );
         ctx.restore();
@@ -335,7 +334,6 @@ function cmdSubmit() {
     if (command !== 'nebulaaa') {
         document.getElementById('nebulacdn').style.display = 'none';
     }
-
     if (command === 'season winter' || command === 'winter') {
         applySeason('winter');
         typeOutput('winter mode');
@@ -383,4 +381,3 @@ function cmdSubmit() {
         typeOutput('unknown command. type "help" for the list!');
     }
 }
-
