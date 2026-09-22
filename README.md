@@ -2,7 +2,7 @@
 <div align="center">
 <img src="https://iili.io/nBmB74a.png" alt="Logo" width="80" height="80">
 </a>
-<h3 align="center">My Website</h3>
+<h3 align="center">my website</h3>
 <p align="center">
 redesigned for the 5th time!
 <br/>
@@ -31,4 +31,3 @@ redesigned for the 5th time!
 <p>summer colors</p>
 <br/>
 <h5 align="center">not vibecoded!</h3>
-
