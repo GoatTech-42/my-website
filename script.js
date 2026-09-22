@@ -1,4 +1,7 @@
-let season = getSeason();
+// coded by luke evanson 2026
+// made for hack club
+// so cool right
+
 const terminal = document.querySelector('.terminal');
 const cmdOutput = document.getElementById('output');
 const cmdInput = document.getElementById('cmdInput');
@@ -8,12 +11,9 @@ const canvas = document.getElementById('particleCanvas');
 const ctx = canvas.getContext('2d');
 const particleArray = [];
 const particleNumber = 75;
-const particleImage = new Image();
-let typingTimer;
-let animationStarted = false;
-let nebulaCdn = [];
-let particlesOn = true;
-const nebulaSources = [{
+const particleImage = new Image();let season = getSeason();
+const commandHistory = [];
+const nebulaSources = [{ // lowk tuff i added a fork cause my github jsdelivr is blocked by my school
         catalog: 'https://cdn.jsdelivr.net/gh/GoatTech-42/NEBULA-CDN@main/games.json',
         base: 'https://cdn.jsdelivr.net/gh/GoatTech-42/NEBULA-CDN@main'
     },
@@ -30,12 +30,16 @@ const nebulaSources = [{
         base: 'https://raw.githubusercontent.com/Nos-and-Stealzers/NEBULA-CDN/main'
     }
 ];
+
+let typingTimer;
+let animationStarted = false;
+let nebulaCdn = [];
+let particlesOn = true;
 let nebulaSource = nebulaSources[0];
-const commandHistory = [];
 let historyList = -1;
 typeOutput('hello, welcome to goat cmd. try some commands!')
 
-function getSeason(date = new Date()) {
+function getSeason(date = new Date()) { // grabs the season so i can change the style colors
     const month = date.getMonth();
     if (month === 11 || month <= 1) {
         return 'winter';
@@ -48,7 +52,7 @@ function getSeason(date = new Date()) {
     }
 }
 
-function applySeason(newSeason) {
+function applySeason(newSeason) { // applies the colors according to the season that was fetched
     season = newSeason;
 
     const seasonStyles = {
@@ -82,7 +86,7 @@ function applySeason(newSeason) {
 
 applySeason(season);
 
-function updatePromptCaret() {
+function updatePromptCaret() { // lots of stuff i don't fully understand but found on some wiki sites that updates the caret
     const shouldShowPrompt = cmdInput.value.trim() === '';
     blinkingSpan.classList.toggle('hidden', !shouldShowPrompt);
 }
@@ -91,7 +95,7 @@ cmdInput.addEventListener('focus', updatePromptCaret);
 cmdInput.addEventListener('input', updatePromptCaret);
 cmdInput.addEventListener('blur', updatePromptCaret);
 
-cmdInput.addEventListener('keydown', function(event) {
+cmdInput.addEventListener('keydown', function(event) { // adds up/down command history
     if (event.key === 'ArrowUp') {
         event.preventDefault();
 
@@ -122,7 +126,7 @@ commandForm.addEventListener('submit', function(event) {
     cmdSubmit();
 });
 
-function typeOutput(text) {
+function typeOutput(text) { // typewriter animation that i found on some random site and adapted/modified to work here
     clearInterval(typingTimer);
     cmdOutput.innerHTML = '<span class="typed-text"></span><span class="output-cursor">_</span>';
 
@@ -163,7 +167,7 @@ function typeOutput(text) {
     }, 50);
 }
 
-async function loadNebula() {
+async function loadNebula() { // unblocked games loader thingy
     const browser = document.getElementById('nebulacdn');
     browser.style.display = 'block';
     browser.innerHTML = '<input class="nebula-search" type="search" placeholder="search games" aria-label="search games"><div class="nebula-list">loading games</div>';
@@ -228,7 +232,7 @@ async function loadNebula() {
     }
 }
 
-async function launchNebulaGame(game) {
+async function launchNebulaGame(game) { // launches the selected nebula game
     const gameWindow = window.open('about:blank', '_blank');
 
     if (!gameWindow) {
@@ -272,7 +276,7 @@ async function launchNebulaGame(game) {
     }
 }
 
-function resizeCanvas() {
+function resizeCanvas() { // resizes canvas :0
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 }
@@ -280,7 +284,7 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
-class Particle {
+class Particle { // sets up particles
     constructor() {
         this.reset();
         this.y = Math.random() * canvas.height;
@@ -330,7 +334,7 @@ function init() {
     }
 }
 
-function animate() {
+function animate() { // actually makes the particles be animated
     if (!particlesOn) {
         requestAnimationFrame(animate);
         return;
@@ -354,7 +358,7 @@ particleImage.onload = () => {
     }
 };
 
-function cmdSubmit() {
+function cmdSubmit() { // passes the command inputted to the probably inefficient if else gate that classifies the commands
     const command = cmdInput.value.trim().toLowerCase();
 
     if (command === '') {
@@ -373,7 +377,7 @@ function cmdSubmit() {
         commandHistory.push(command);
     }
     historyList = commandHistory.length;
-
+    // complete yap below
     if (command === 'season winter' || command === 'winter') {
         applySeason('winter');
         typeOutput('winter mode');
@@ -438,7 +442,7 @@ function cmdSubmit() {
     updatePromptCaret();
 }
 
-cmdInput.addEventListener('keydown', function(event) {
+cmdInput.addEventListener('keydown', function(event) { // actually makes the up down command history work not just an event listener
     if (event.key === 'ArrowUp') {
         event.preventDefault();
         if (historyList > 0) {
@@ -458,7 +462,7 @@ cmdInput.addEventListener('keydown', function(event) {
     }
 });
 
-function updateUnderscore() {
+function updateUnderscore() { // updates the cool terminal caret thingy
     const emptyInput = cmdInput.value.trim() === '';
 
     if (document.activeElement === cmdInput && !emptyInput) {
