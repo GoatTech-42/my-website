@@ -419,7 +419,7 @@ function cmdSubmit() {
     } else if (command === 'sources help') {
         typeOutput('tells you the sources i used to build this website');
     } else if (command === 'sources') {
-        typeOutput('sources: <br/><a href="https://fonts.google.com/specimen/Cascadia+Mono" target="_blank">google fonts</a><br/>');
+        typeOutput('<strong>sources:</strong><br/><a href="https://fonts.google.com/specimen/Cascadia+Mono" target="_blank">google fonts</a><br/><a href="https://github.com/GoatTech-42/NEBULACDN" target="_blank">nebula cdn</a><br/>google ai overview<br/>stack overflow or smth<br/>my brain');
     } else if (command === 'particles off') {
         particlesOn = false;
         canvas.style.display = "none";
