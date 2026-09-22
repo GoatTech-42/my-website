@@ -22,8 +22,10 @@ redesigned for the 5th time!
 
 <br/>
 <h3>previews:</h3>
-<img src="readmeimg/preview.png" alt="Preview of the website with fall colors">
+<img src="readmeimg/fallpreview.png" alt="Preview of the website with fall colors">
 <p>fall colors</p>
+<img src="readmeimg/winterpreview.png" alt="Preview of the website with winter colors">
+<p>winter colors</p>
   
 
 
