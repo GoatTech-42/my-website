@@ -20,7 +20,7 @@ body { /* body styles like background and font */
     overflow: hidden;
 }
 
-.custom-cursor { /* literally just a custom cursor lol */
+.custom-cursor { /* literally just a custom cursor but animated really cool */
     position: fixed;
     top: 0;
     left: 0;
@@ -135,7 +135,7 @@ body { /* body styles like background and font */
     font-size: 14px;
 }
 
-.copyright {
+.copyright { /* i wonder what this one could be */
     color: white;
     font-family: 'Noto Sans', sans-serif;
 }
@@ -153,12 +153,12 @@ body { /* body styles like background and font */
     cursor: none;
 }
 
-.blink {
+.blink { /* blink */
     font-weight: bold;
     animation: blink 1s step-start infinite;
 }
 
-@keyframes blink {
+@keyframes blink { /* also blink */
     50% {
         opacity: 0;
     }
@@ -172,7 +172,7 @@ body { /* body styles like background and font */
     display: none;
 }
 
-.output {
+.output { /* output for terminal */
     white-space: normal;
     overflow-wrap: anywhere;
     margin: 0;
