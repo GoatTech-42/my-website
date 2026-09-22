@@ -4,12 +4,12 @@
 </a>
 <h3 align="center">My Website</h3>
 <p align="center">
-Redesigned for the 5th time!
+redesigned for the 5th time!
 <br/>
 <br/>
   
-<a href="https://lukeevanson.com">The Site</a> |
-<a href="https://github.com/GoatTech-42/my-website/issues">Issues</a>
+<a href="https://lukeevanson.com">the site</a> |
+<a href="https://github.com/GoatTech-42/my-website/issues">issues</a>
 </p>
 </div>
 
@@ -19,7 +19,13 @@ Redesigned for the 5th time!
 - [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
 - [JS](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
+<figure>
+  <img src="readmeimg/preview.png" alt="Preview of the website with fall colors">
+  <figcaption align="center"><b>site in fall mode</figcaption>
+</figure>
+
+
 <br/>
 <br/>
-<h5 align="center">Not Vibecoded!</h3>
+<h5 align="center">not vibecoded!</h3>
 
