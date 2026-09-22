@@ -22,10 +22,9 @@ redesigned for the 5th time!
 
 <br/>
 <h3>previews:</h3>
-<figure>
-  <img src="readmeimg/preview.png" alt="Preview of the website with fall colors">
-  <figcaption align="center"><b>site in fall mode</figcaption>
-</figure>
+<img src="readmeimg/preview.png" alt="Preview of the website with fall colors">
+<p>fall colors</p>
+  
 
 
 <br/>
