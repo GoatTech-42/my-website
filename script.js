@@ -378,7 +378,8 @@ particleImage.onload = () => {
 };
 
 function cmdSubmit() { // passes the command inputted to the probably inefficient if else gate that classifies the commands
-    const command = cmdInput.value.trim().toLowerCase();
+    const writtenText = cmdInput.value;
+    const command = writtenText.trim().toLowerCase();
 
     if (command === '') {
         typeOutput('bro put in a command');
@@ -392,8 +393,8 @@ function cmdSubmit() { // passes the command inputted to the probably inefficien
         document.getElementById('nebulacdn').style.display = 'none';
     }
 
-    if (commandHistory[commandHistory.length - 1] !== command) {
-        commandHistory.push(command);
+    if (commandHistory[commandHistory.length - 1] !== writtenText) {
+        commandHistory.push(writtenText);
     }
     historyList = commandHistory.length;
     // complete yap below
@@ -460,26 +461,6 @@ function cmdSubmit() { // passes the command inputted to the probably inefficien
     cmdInput.focus();
     updatePromptCaret();
 }
-
-cmdInput.addEventListener('keydown', function(event) { // actually makes the up down command history work not just an event listener
-    if (event.key === 'ArrowUp') {
-        event.preventDefault();
-        if (historyList > 0) {
-            historyList--;
-            cmdInput.value = commandHistory[historyList];
-        }
-    }
-    if (event.key === 'ArrowDown') {
-        event.preventDefault();
-        if (historyList < commandHistory.length - 1) {
-            historyList += 1;
-            cmdInput.value = commandHistory[historyList];
-        } else {
-            historyList = commandHistory.length;
-            cmdInput.value = '';
-        }
-    }
-});
 
 function updateUnderscore() { // updates the cool terminal caret thingy
     const emptyInput = cmdInput.value.trim() === '';
