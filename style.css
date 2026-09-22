@@ -86,6 +86,12 @@ body { /* body styles like background and font */
         cursor: auto;
     }
 
+    a,
+    button,
+    input {
+        cursor: auto;
+    }
+
     .custom-cursor {
         display: none;
     }
@@ -189,6 +195,10 @@ body { /* body styles like background and font */
 
 a {
     color: inherit;
+}
+
+a, button {
+    cursor: none;
 }
 
 .nebulacdn { /* unblocked games */
