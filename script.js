@@ -11,7 +11,7 @@ const particleNumber = 75;
 const particleImage = new Image();
 let typingTimer;
 let animationStarted = false;
-let nebulaGames = [];
+let nebulaCdn = [];
 let particlesOn = true;
 const nebulaSources = [{
         catalog: 'https://cdn.jsdelivr.net/gh/GoatTech-42/NEBULA-CDN@main/games.json',
@@ -166,7 +166,7 @@ function typeOutput(text) {
 async function loadNebula() {
     const browser = document.getElementById('nebulacdn');
     browser.style.display = 'block';
-    browser.innerHTML = '<input class="nebula-search" type="search" placeholder="search games..." aria-label="Search games"><div class="nebula-list">loading games...</div>';
+    browser.innerHTML = '<input class="nebula-search" type="search" placeholder="search games" aria-label="search games"><div class="nebula-list">loading games</div>';
 
     try {
         let catalog;
@@ -176,7 +176,7 @@ async function loadNebula() {
             try {
                 const response = await fetch(source.catalog);
                 if (!response.ok) {
-                    throw new Error(`Catalog request failed: ${response.status}`);
+                    throw new Error(` request failed: ${response.status}`);
                 }
 
                 catalog = await response.json();
@@ -188,16 +188,16 @@ async function loadNebula() {
         }
 
         if (!catalog) {
-            throw lastError || new Error('Could not load the game catalog');
+            throw lastError || new Error('couldnt load games json');
         }
 
-        nebulaGames = catalog.games || [];
+        nebulaCdn = catalog.games || [];
         const search = browser.querySelector('.nebula-search');
         const list = browser.querySelector('.nebula-list');
 
         function renderGames(query = '') {
             const normalizedQuery = query.trim().toLowerCase();
-            const games = nebulaGames
+            const games = nebulaCdn
                 .filter(game => game.name.toLowerCase().includes(normalizedQuery))
                 .slice(0, 40);
 
@@ -214,7 +214,6 @@ async function loadNebula() {
                 button.type = 'button';
                 button.textContent = game.name;
                 button.addEventListener('click', () => {
-                    browser.style.display = 'none';
                     launchNebulaGame(game);
                 });
                 list.appendChild(button);
@@ -224,7 +223,7 @@ async function loadNebula() {
         search.addEventListener('input', () => renderGames(search.value));
         renderGames();
     } catch (error) {
-        browser.textContent = 'could not load games';
+        browser.textContent = 'couldnt load games, the sources are probably blocked';
         console.error(error);
     }
 }
@@ -233,12 +232,11 @@ async function launchNebulaGame(game) {
     const gameWindow = window.open('about:blank', '_blank');
 
     if (!gameWindow) {
-        typeOutput('allow popups to launch a game');
+        typeOutput('allow popups so u can play games');
         return;
     }
 
-    gameWindow.document.write('<p>loading game...</p>');
-
+    gameWindow.document.write('<p>loading ur game</p>');
     try {
         let gameCode;
         let gameUrl;
