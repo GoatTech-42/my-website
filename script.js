@@ -9,6 +9,7 @@ const blinkingSpan = document.getElementById('blink');
 const commandForm = document.getElementById('commandForm');
 const canvas = document.getElementById('particleCanvas');
 const ctx = canvas.getContext('2d');
+const customCursor = document.querySelector('.custom-cursor');
 const particleArray = [];
 const particleNumber = 75;
 const particleImage = new Image();let season = getSeason();
@@ -37,6 +38,24 @@ let nebulaCdn = [];
 let particlesOn = true;
 let nebulaSource = nebulaSources[0];
 let historyList = -1;
+
+document.addEventListener('mousemove', function(event) {
+    customCursor.style.left = `${event.clientX}px`;
+    customCursor.style.top = `${event.clientY}px`;
+    customCursor.style.opacity = '1';
+
+    const target = event.target instanceof Element ? event.target : null;
+    const isTextInput = target && target.closest('input, textarea, [contenteditable="true"]');
+    const isInteractive = target && target.closest('a, button');
+
+    customCursor.classList.toggle('text-mode', Boolean(isTextInput));
+    customCursor.classList.toggle('hover-mode', Boolean(isInteractive && !isTextInput));
+});
+
+document.addEventListener('mouseleave', function() {
+    customCursor.style.opacity = '0';
+});
+
 typeOutput('hello, welcome to goat cmd. try some commands!')
 
 function getSeason(date = new Date()) { // grabs the season so i can change the style colors
