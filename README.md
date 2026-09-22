@@ -26,10 +26,10 @@ redesigned for the 5th time!
 <p>fall colors</p>
 <img src="readmeimg/winterpreview.png" alt="Preview of the website with winter colors">
 <p>winter colors</p>
-  
-
-
-<br/>
+<img src="readmeimg/springpreview.png" alt="Preview of the website with spring colors">
+<p>spring colors</p>
+<img src="readmeimg/summerpreview.png" alt="Preview of the website with summer colors">
+<p>summer colors</p>
 <br/>
 <h5 align="center">not vibecoded!</h3>
 
