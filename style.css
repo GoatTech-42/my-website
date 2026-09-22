@@ -136,8 +136,11 @@ body { /* body styles like background and font */
 }
 
 .copyright { /* i wonder what this one could be */
+    width: 50vw;
+    box-sizing: border-box;
     color: white;
     font-family: 'Noto Sans', sans-serif;
+    text-align: left;
 }
 
 .cmdinput { /* input for the cmd line */
@@ -265,5 +268,9 @@ a, button {
         width: 100%;
         min-height: 70vh;
         padding: 14px;
+    }
+
+    .copyright {
+        width: 100%;
     }
 }
