@@ -19,6 +19,9 @@ redesigned for the 5th time!
 - [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
 - [JS](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
+
+<br/>
+<h3>previews:</h3>
 <figure>
   <img src="readmeimg/preview.png" alt="Preview of the website with fall colors">
   <figcaption align="center"><b>site in fall mode</figcaption>
