@@ -183,7 +183,7 @@ function typeOutput(text) { // typewriter animation that i found on some random 
         if (currentTextNode.index === currentTextNode.text.length) {
             nodeIndex += 1;
         }
-    }, 50);
+    }, 40);
 }
 
 async function loadNebula() { // unblocked games loader thingy
