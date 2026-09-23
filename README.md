@@ -5,6 +5,7 @@
 <h3 align="center">my website</h3>
 <p align="center">
 redesigned for the 5th time!
+and yes everything in lowercase is intentional
 <br/>
 <br/>
   
