@@ -1,1 +1,1 @@
-![Alt Text](logo.png){width=300px}
+![Alt Text](favicon.ico){width=300px}
