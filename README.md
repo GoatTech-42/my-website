@@ -5,8 +5,8 @@ redesigned for the 5th time! \
 [the site](https://lukeevanson.com/) | [issues](https://github.com/GoatTech-42/my-website/issues) 
 
 ### built with: 
-- [html](https://html.spec.whatwg.org/) \
-- [css](https://www.w3.org/Style/CSS/Overview.en.html) \
+- [html](https://html.spec.whatwg.org/) 
+- [css](https://www.w3.org/Style/CSS/Overview.en.html) 
 - [js](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 ### description: 
