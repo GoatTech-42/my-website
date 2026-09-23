@@ -15,11 +15,11 @@ and yes everything in lowercase is intentional
 </p>
 </div>
 
-### Built With
+### built with
 
-- [HTML](https://html.spec.whatwg.org/)
-- [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
-- [JS](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [html](https://html.spec.whatwg.org/)
+- [css](https://www.w3.org/Style/CSS/Overview.en.html)
+- [js](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 <br/>
 <h3>description:</h3>
