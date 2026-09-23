@@ -20,6 +20,10 @@ redesigned for the 5th time!
 - [JS](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 <br/>
+<h3>description:</h3>
+<p>this is my personal website, meant to show off my skills and projects. it's designed like a command line, and changes colors based on the season. it has cool minecraft falling leaf particles, and you can type commands to see different things about me and easter eggs. easter egg commands can be found by just looking at the code.</p>
+<h5>type "help" for help lol</h5>
+<br/>
 <h3>previews:</h3>
 <img src="readmeimg/fallpreview.png" alt="Preview of the website with fall colors">
 <p>fall colors</p>
