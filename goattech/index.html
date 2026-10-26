@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>goattech</title>
+<meta name="description" content="goattech builds tools for minecraft servers, the web and 3d printers. run by luke evanson.">
+<meta name="theme-color" content="#efece4">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#efece4;--ink:#141311;--mute:#6d6a62;--line:#cfcabd;--acc:#d9481c;--dline:#34312c;--dmute:#9a958a}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.55 "Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.mono{font-family:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;letter-spacing:0}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:56px}
+.logo{font-weight:600;font-size:18px;letter-spacing:-.02em;text-decoration:none}
+.logo i{font-style:normal;color:var(--acc)}
+nav{display:flex;gap:28px}
+nav a{text-decoration:none;color:var(--mute);font-size:15px;transition:color .15s}
+nav a:hover{color:var(--ink)}
+.hero{padding:120px 0 96px}
+.hero h1{font-weight:600;font-size:clamp(46px,8.6vw,132px);line-height:.96;letter-spacing:-.045em;max-width:11.5em}
+.hero h1 em{font-style:normal;color:var(--acc)}
+.hero-row{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;margin-top:72px;align-items:end}
+.hero p{font-size:21px;line-height:1.45;max-width:30em;color:#2c2a26}
+.stamp{border-top:1px solid var(--ink);padding-top:14px;display:grid;grid-template-columns:auto 1fr;gap:6px 24px;color:var(--mute)}
+.stamp b{font-weight:500;color:var(--ink)}
+.work{background:var(--ink);color:#f3f0e8;padding:28px 0 40px}
+.work .top{display:flex;justify-content:space-between;color:var(--dmute);padding:14px 0 18px}
+.row{display:grid;grid-template-columns:96px 1.2fr 1.4fr 150px;gap:32px;padding:44px 0;border-top:1px solid var(--dline);align-items:start;transition:background .2s}
+.row .n{color:var(--dmute);padding-top:14px}
+.row h2{font-weight:600;font-size:clamp(38px,5.4vw,76px);letter-spacing:-.04em;line-height:1}
+.row h2 a{text-decoration:none;background:linear-gradient(var(--acc),var(--acc)) 0 100%/0 3px no-repeat;transition:background-size .3s ease}
+.row:hover h2 a{background-size:100% 3px}
+.row .d p{font-size:19px;line-height:1.5;max-width:28em;color:#d8d4c8}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.tags span{border:1px solid var(--dline);padding:3px 10px;border-radius:99px;color:var(--dmute)}
+.row .s{color:var(--dmute);text-align:right;padding-top:14px;line-height:1.7}
+.row .s b{display:block;font-weight:500;color:#f3f0e8}
+.row .s .p{color:var(--acc)}
+.about{padding:110px 0}
+.about .g{display:grid;grid-template-columns:1fr 1.5fr;gap:64px}
+.about h3{font-weight:600;font-size:clamp(30px,3.4vw,46px);letter-spacing:-.035em;line-height:1.05}
+.about .t p{font-size:21px;line-height:1.5;margin-bottom:22px;max-width:32em}
+.about .t p.sm{font-size:17px;color:var(--mute)}
+.links{display:flex;gap:28px;margin-top:34px;flex-wrap:wrap}
+.links a{font-weight:500;border-bottom:2px solid var(--ink);text-decoration:none;padding-bottom:3px;transition:color .15s,border-color .15s}
+.links a:hover{color:var(--acc);border-color:var(--acc)}
+.log{margin-top:40px;border-top:1px solid var(--dline)}
+.log .top{padding:18px 0 8px}
+.log ul{list-style:none}
+.log li{display:grid;grid-template-columns:150px 1fr 90px;gap:24px;padding:12px 0;border-bottom:1px solid var(--dline);color:#d8d4c8}
+.log li b{font-weight:500;color:var(--acc)}
+.log li span:last-child{text-align:right;color:var(--dmute)}
+.log li span:nth-child(2){overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media (max-width:860px){.log li{grid-template-columns:1fr;gap:2px}.log li span:last-child{text-align:left}.log li span:nth-child(2){white-space:normal}}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--mute)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+a:focus-visible{outline:2px solid var(--acc);outline-offset:4px}
+.rv{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+@media (max-width:860px){
+ .wrap{padding:0 20px}.hero{padding:72px 0 64px}.hero-row{grid-template-columns:1fr;gap:40px;margin-top:48px}
+ .hero p{font-size:19px}
+ .row{grid-template-columns:1fr;gap:14px;padding:34px 0}.row .n{padding:0}.row .s{text-align:left;padding:6px 0 0;display:flex;gap:18px;flex-wrap:wrap}.row .s b{display:inline}
+ .about{padding:72px 0}.about .g{grid-template-columns:1fr;gap:28px}.about .t p{font-size:19px}
+ nav{gap:20px}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="logo" href="#top">goattech<i>.</i></a>
+<nav><a href="#work">work</a><a href="#about">about</a><a href="https://github.com/GoatTech-42" rel="noopener">github</a></nav>
+</div></header>
+<main id="top">
+<section class="hero"><div class="wrap">
+<h1 class="rv">tools for games, networks and <em>machines.</em></h1>
+<div class="hero-row rv">
+<p>goattech is where luke evanson builds things. right now that's an anticheat for fabric servers, a proxy browser, and custom firmware for a 3d printer. the code for those three is public on github.</p>
+<div class="stamp mono">
+<span>run by</span><b>luke evanson</b>
+<span>focus</span><b>java, rust, firmware</b>
+<span>code</span><b>github.com/GoatTech-42</b>
+<span>latest push</span><b id="latest">checking github</b>
+</div>
+</div>
+</div></section>
+
+<section class="work" id="work"><div class="wrap">
+<div class="top mono"><span>selected work</span><span>3 projects, all public</span></div>
+
+<article class="row rv"><div class="n mono">fig 01<br>2026-10</div>
+<h2><a href="https://github.com/GoatTech-42/meshac" rel="noopener">meshac</a></h2>
+<div class="d"><p>a native fabric anticheat. my goal is to catch what a server can catch without punishing legit play. first beta is out.</p>
+<div class="tags mono"><span>fabric</span><span>agpl-3.0</span><span>open source</span></div></div>
+<div class="s mono"><b class="p">beta</b>v0.1.0<br><span data-repo="meshac"></span></div></article>
+
+<article class="row rv"><div class="n mono">fig 02<br>2026-09</div>
+<h2><a href="https://github.com/GoatTech-42/ramjet" rel="noopener">ramjet</a></h2>
+<div class="d"><p>a proxy browser built on scramjet v2, with its own search, made for personal use. the source is public.</p>
+<div class="tags mono"><span>scramjet v2</span><span>web proxy</span><span>self-hosted</span></div></div>
+<div class="s mono"><b>in use</b>personal<br><span data-repo="ramjet"></span></div></article>
+
+<article class="row rv"><div class="n mono">fig 03<br>2026-10</div>
+<h2><a href="https://github.com/GoatTech-42/goattech-forge" rel="noopener">forge</a></h2>
+<div class="d"><p>custom marlin firmware for the creality ender 3 v3 se, based on the community port. it's being tested on a real printer, and it isn't ready for everyone yet.</p>
+<div class="tags mono"><span>marlin 2.1</span><span>gpl-3.0</span><span>ender 3 v3 se</span></div></div>
+<div class="s mono"><b class="p">early</b>testing<br><span data-repo="goattech-forge"></span></div></article>
+
+<div class="log" id="log" hidden>
+<div class="top mono"><span>fig 04 · latest commits, live from github</span><span>public repos only</span></div>
+<ul class="mono" id="loglist"></ul>
+</div>
+</div></section>
+
+<section class="about" id="about"><div class="wrap"><div class="g">
+<h3 class="rv">one person, a lot of side projects.</h3>
+<div class="t rv">
+<p>i'm luke. i like games, java and robots, and i build most things for myself first. if something works well enough to share, it goes up on github.</p>
+<p class="sm">there's more there than what's on this page, including minecraft tools and a few hack club projects. new work lands there first.</p>
+<div class="links"><a href="https://github.com/GoatTech-42" rel="noopener">github.com/GoatTech-42</a></div>
+</div></div></div></section>
+</main>
+<footer><div class="wrap mono"><span>© goattech industries 2026</span><span>made by luke evanson · <a href="https://lukeevanson.com">lukeevanson.com</a></span></div></footer>
+<script>
+(function(){
+var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+function ago(d){var s=(Date.now()-new Date(d))/1000;if(s<3600)return Math.max(1,Math.round(s/60))+' min ago';if(s<86400)return Math.round(s/3600)+' hr ago';var n=Math.round(s/86400);return n+(n==1?' day ago':' days ago')}
+var repos=['meshac','ramjet','goattech-forge'],best=0;
+Promise.all(repos.map(function(r){return fetch('https://api.github.com/repos/GoatTech-42/'+r).then(function(x){return x.ok?x.json():null}).catch(function(){return null})})).then(function(a){
+a.forEach(function(j,i){if(!j)return;var el=document.querySelector('[data-repo="'+repos[i]+'"]');if(el)el.textContent='pushed '+ago(j.pushed_at);var t=new Date(j.pushed_at).getTime();if(t>best)best=t});
+document.getElementById('latest').textContent=best?ago(best):'see github';
+});
+
+Promise.all(repos.map(function(r){return fetch('https://api.github.com/repos/GoatTech-42/'+r+'/commits?per_page=3').then(function(x){return x.ok?x.json():[]}).catch(function(){return []})})).then(function(a){
+var all=[];a.forEach(function(list,i){(list||[]).forEach(function(c){all.push({r:repos[i],m:c.commit.message.split('\n')[0],d:c.commit.author.date})})});
+if(!all.length)return;all.sort(function(x,y){return new Date(y.d)-new Date(x.d)});
+var ul=document.getElementById('loglist');
+all.slice(0,6).forEach(function(c){var li=document.createElement('li');var b=document.createElement('b');b.textContent=c.r;var m=document.createElement('span');m.textContent=c.m;var t=document.createElement('span');t.textContent=ago(c.d);li.appendChild(b);li.appendChild(m);li.appendChild(t);ul.appendChild(li)});
+document.getElementById('log').hidden=false});
+})();
+</script>
+</body>
+</html>
