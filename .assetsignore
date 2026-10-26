@@ -3,4 +3,5 @@ src
 .assetsignore
 .git
 .github
+.wrangler
 node_modules
