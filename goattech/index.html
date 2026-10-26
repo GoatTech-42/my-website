@@ -64,9 +64,17 @@ nav a:hover{color:var(--ink)}
 footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--mute)}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 a:focus-visible{outline:2px solid var(--acc);outline-offset:4px}
+.hl .ln{display:block;overflow:hidden;padding-bottom:.06em;margin-bottom:-.06em}
+.hl .ln>span{display:inline-block;transform:translateY(105%);animation:up .9s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:var(--d)}
+@keyframes up{to{transform:none}}
+.row h2 a::after{content:"\2197";display:inline-block;font-size:.4em;margin-left:.3em;color:var(--acc);opacity:0;transform:translate(-8px,4px);transition:opacity .25s,transform .25s;vertical-align:top}
+.row:hover h2 a::after,.row h2 a:focus-visible::after{opacity:1;transform:none}
+.row h2{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.row:hover h2{transform:translateX(10px)}
+@media (hover:none){.row h2 a::after{display:none}.row:hover h2{transform:none}}
 .rv{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
 .rv.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){.hl .ln>span{transform:none;animation:none}.row:hover h2{transform:none}.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 @media (max-width:860px){
  .wrap{padding:0 20px}.hero{padding:72px 0 64px}.hero-row{grid-template-columns:1fr;gap:40px;margin-top:48px}
  .hero p{font-size:19px}
@@ -83,7 +91,7 @@ a:focus-visible{outline:2px solid var(--acc);outline-offset:4px}
 </div></header>
 <main id="top">
 <section class="hero"><div class="wrap">
-<h1 class="rv">tools for games, networks and <em>machines.</em></h1>
+<h1 class="hl" aria-label="tools for games, networks and machines."><span class="ln"><span style="--d:0s">tools for games,</span></span> <span class="ln"><span style="--d:.09s">networks and</span></span> <span class="ln"><span style="--d:.18s"><em>machines.</em></span></span></h1>
 <div class="hero-row rv">
 <p>goattech is where luke evanson builds things. right now that's an anticheat for fabric servers, a proxy browser, and custom firmware for a 3d printer. the code for those three is public on github.</p>
 <div class="stamp mono">
