@@ -89,7 +89,7 @@ nav a:hover{opacity:1}
 .log li{display:grid;grid-template-columns:160px 1fr 100px;gap:24px;padding:12px 0;border-bottom:1px solid var(--dline);color:#d4d4d4;opacity:0;transform:translateX(-10px);transition:opacity .5s,transform .5s var(--ease)}
 .log li.on{opacity:1;transform:none}
 .log li b{font-weight:500;color:#f2f2f2}
-.log li span:last-child{text-align:right;color:var(--dmute)}
+.log li a{color:inherit;text-decoration:underline;text-underline-offset:3px}.log li a:hover,.log li a:focus-visible{background:var(--ink);color:var(--paper);text-decoration:none}.log li span:last-child{text-align:right;color:var(--dmute)}
 .log li span:nth-child(2){overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .caret{display:inline-block;width:8px;height:14px;background:#f2f2f2;margin-left:6px;vertical-align:-2px;animation:bl 1s steps(2) infinite}
 @keyframes bl{50%{opacity:0}}
@@ -277,9 +277,10 @@ a.forEach(function(j,i){if(!j)return;var el=document.querySelector('[data-repo="
 document.getElementById('latest').textContent=best?ago(best):'see github'});
 Promise.all(repos.map(function(r){return fetch('https://api.github.com/repos/GoatTech-42/'+r+'/commits?per_page=3').then(function(x){return x.ok?x.json():[]}).catch(function(){return []})})).then(function(a){
 var all=[];a.forEach(function(list,i){(list||[]).forEach(function(c){all.push({r:repos[i],m:c.commit.message.split('\n')[0],d:c.commit.author.date})})});
-if(!all.length)return;all.sort(function(x,y){return new Date(y.d)-new Date(x.d)});
+var down=!all.length;
+if(down)repos.forEach(function(r){all.push({r:r,m:'commits did not load, see them on github',d:null,u:'https://github.com/GoatTech-42/'+r+'/commits'})});else all.sort(function(x,y){return new Date(y.d)-new Date(x.d)});
 var ul=document.getElementById('loglist');
-all.slice(0,6).forEach(function(c){var li=document.createElement('li');var b=document.createElement('b');b.textContent=c.r;var m=document.createElement('span');m.textContent=c.m;var t=document.createElement('span');t.textContent=ago(c.d);li.appendChild(b);li.appendChild(m);li.appendChild(t);ul.appendChild(li)});
+all.slice(0,6).forEach(function(c){var li=document.createElement('li');var b=document.createElement('b');b.textContent=c.r;var m=document.createElement('span');var t=document.createElement('span');if(c.u){var a=document.createElement('a');a.href=c.u;a.rel='noopener';a.textContent=c.m;m.appendChild(a);t.textContent='\u2197'}else{m.textContent=c.m;t.textContent=ago(c.d)}li.appendChild(b);li.appendChild(m);li.appendChild(t);ul.appendChild(li)});
 var lg=document.getElementById('log');lg.hidden=false;
 var lio=new IntersectionObserver(function(es){if(es[0].isIntersecting){lio.disconnect();ul.querySelectorAll('li').forEach(function(li,i){setTimeout(function(){li.classList.add('on')},reduce?0:i*140)})}},{threshold:.2});lio.observe(lg)});
 })();
