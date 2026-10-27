@@ -225,6 +225,11 @@ nav a{padding:12px 4px;margin:-12px -4px}
 <div class="d"><p>marlin firmware for my ender 3 v3 se. still testing it.</p>
 <div class="tags mono"><span>marlin 2.1</span><span>gpl-3.0</span><span>ender 3 v3 se</span></div></div>
 <div class="s mono"><b class="p">&#9675; early</b>testing<br><span data-repo="goattech-forge"></span></div></article>
+<article class="plate"><div class="n mono">04<br>2026-10</div>
+<h2><a href="https://github.com/GoatTech-42/tally" rel="noopener">tally</a></h2>
+<div class="d"><p>a maintained fork of gonuts, a fabric mod for the donutsmp auction house. still in development.</p>
+<div class="tags mono"><span>fabric</span><span>java</span><span>mit</span></div></div>
+<div class="s mono"><b class="p">&#9675; early</b>in development<br><span data-repo="tally"></span></div></article>
 
 </div>
 <div class="more" id="more"><div class="top mono"><span>more</span><span></span></div><ul class="mlist">
@@ -282,7 +287,7 @@ addEventListener('scroll',lit,{passive:true});addEventListener('resize',lit);lit
 var word=document.getElementById('word'),chs=[];
 if(!reduce){var t=word.textContent;word.textContent='';word.classList.add('split');t.split('').forEach(function(c,i){var e=document.createElement('span');e.className='ch';e.setAttribute('aria-hidden','true');e.style.setProperty('--i',i);e.textContent=c;word.appendChild(e);chs.push(e)})}
 // marquee band
-var track=document.getElementById('track');['meshac','ramjet','forge','meshac','ramjet','forge','meshac','ramjet','forge'].forEach(function(n){var e=document.createElement('span');e.textContent=n;track.appendChild(e)});
+var track=document.getElementById('track');['meshac','ramjet','forge','tally','meshac','ramjet','forge','tally','meshac','ramjet','forge','tally'].forEach(function(n){var e=document.createElement('span');e.textContent=n;track.appendChild(e)});
 // scroll-linked hero and marquee, one passive handler
 var frame=document.querySelector('.hero .frame'),tk=0;
 function onScroll(){tk=0;if(reduce)return;var y=scrollY,h=innerHeight,p=Math.max(0,Math.min(1,y/(h*.85)));
@@ -317,7 +322,7 @@ addEventListener('scroll',req,{passive:true});addEventListener('resize',size);si
 })();
 // github data
 function ago(d){var s=(Date.now()-new Date(d))/1000;if(s<3600)return Math.max(1,Math.round(s/60))+' min ago';if(s<86400)return Math.round(s/3600)+' hr ago';var n=Math.round(s/86400);return n+(n==1?' day ago':' days ago')}
-var repos=['meshac','ramjet','goattech-forge'],best=0;
+var repos=['meshac','ramjet','goattech-forge','tally'],best=0;
 Promise.all(repos.map(function(r){return fetch('https://api.github.com/repos/GoatTech-42/'+r).then(function(x){return x.ok?x.json():null}).catch(function(){return null})})).then(function(a){
 a.forEach(function(j,i){if(!j)return;var el=document.querySelector('[data-repo="'+repos[i]+'"]');if(el)el.textContent='pushed '+ago(j.pushed_at);var t=new Date(j.pushed_at).getTime();if(t>best)best=t});
 document.getElementById('latest').textContent=best?ago(best):'see github'});
