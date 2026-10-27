@@ -2,9 +2,9 @@
 <html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>goattech</title>
-<meta name="description" content="goattech: minecraft stuff, a web proxy and printer firmware.">
+<meta name="description" content="goattech: minecraft stuff, a web proxy, printer firmware, a macro pad and a few other things.">
 <meta name="theme-color" content="#0a0a0a"><meta name="color-scheme" content="dark">
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -159,6 +159,27 @@ a:focus-visible{outline:2px solid currentColor;outline-offset:4px}
  .about .big span{opacity:1}.foot-word span{transform:none;transition:none}
  .plate:hover h2{transform:none}.caret{animation:none}
 }
+
+.more{position:relative;z-index:2;background:#141414;margin-top:56px}
+.more .top{padding:18px 0 8px;border-top:1px solid var(--dline)}
+.mlist{list-style:none}
+.mrow{display:grid;grid-template-columns:220px 1fr 170px 80px;gap:24px;align-items:baseline;padding:20px 0;border-top:1px solid var(--dline);text-decoration:none;min-height:56px;transition:background .15s,color .15s}
+.mlist li:last-child .mrow{border-bottom:1px solid var(--dline)}
+.mn{font-weight:600;font-size:clamp(22px,2.4vw,30px);letter-spacing:-.03em;line-height:1.1}
+.md{color:#d4d4d4;font-size:17px;line-height:1.45;max-width:34em}
+.mt{color:var(--dmute)}
+.ml{text-align:right;color:#f2f2f2}
+.mrow:hover,.mrow:focus-visible{background:#f2f2f2;color:#0a0a0a;outline:none}
+.mrow:hover .md,.mrow:hover .mt,.mrow:hover .ml,.mrow:focus-visible .md,.mrow:focus-visible .mt,.mrow:focus-visible .ml{color:#0a0a0a}
+@media (hover:none){.mrow:hover{background:none;color:inherit}.mrow:hover .md{color:#d4d4d4}.mrow:hover .mt{color:var(--dmute)}.mrow:hover .ml{color:#f2f2f2}.mrow:active{background:#1f1f1f}}
+@media (max-width:900px){.mrow{grid-template-columns:1fr auto;gap:6px 16px;padding:18px 0}.md{grid-column:1/-1;font-size:16px}.mt{grid-column:1;grid-row:3}.ml{grid-column:2;grid-row:3}.mn{grid-column:1;grid-row:1}}
+/* phone fixes */
+.logo{display:inline-block;padding:12px 0;margin:-12px 0}
+@media (max-width:900px){.links a{display:inline-block;padding:16px 0 3px;margin-top:-16px}.more{margin-top:12px}footer .row a{padding:13px 8px;margin:-13px -8px}footer .row{align-items:center}}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;overflow-x:clip}
+header{padding-top:env(safe-area-inset-top)}
+nav a{padding:12px 4px;margin:-12px -4px}
+@media (max-width:900px){nav{gap:14px}nav a{padding:14px 6px;margin:-14px -6px}.wrap{padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}}
 </style>
 </head>
 <body>
@@ -171,7 +192,7 @@ a:focus-visible{outline:2px solid currentColor;outline-offset:4px}
 <div class="meta mono rv"><span>goattech</span><span>2026</span></div>
 <h1 class="word" id="word" aria-label="goattech">goattech</h1>
 <div class="hero-row">
-<p class="lead rv">minecraft stuff, a web proxy and firmware for my printer. the code's on github.</p>
+<p class="lead rv">minecraft stuff, a web proxy, printer firmware, a macro pad and a few other things. most of the code's on github.</p>
 <div class="ledger mono rv"><span>code</span><b>github.com/GoatTech-42</b><span>latest push</span><b id="latest">see github</b></div>
 </div></div></section>
 
@@ -196,6 +217,17 @@ a:focus-visible{outline:2px solid currentColor;outline-offset:4px}
 <div class="d"><p>marlin firmware for my ender 3 v3 se. still testing it.</p>
 <div class="tags mono"><span>marlin 2.1</span><span>gpl-3.0</span><span>ender 3 v3 se</span></div></div>
 <div class="s mono"><b class="p">&#9675; early</b>testing<br><span data-repo="goattech-forge"></span></div></article>
+
+<div class="more" id="more"><div class="top mono"><span>more</span><span></span></div><ul class="mlist">
+<li><a class="mrow" href="https://obsidian.goattech.us" rel="noopener"><span class="mn">obsidian</span><span class="md">a rust cryptography research project that runs in your browser. experimental, not for secrets.</span><span class="mt mono">research · wasm</span><span class="ml mono">live ↗</span></a></li>
+<li><a class="mrow" href="https://github.com/GoatTech-42/worldvault" rel="noopener"><span class="mn">worldvault</span><span class="md">a fabric mod that stores files in books inside a chest. experimental, singleplayer only.</span><span class="mt mono">fabric · mit</span><span class="ml mono">github ↗</span></a></li>
+<li><a class="mrow" href="https://github.com/GoatTech-42/Traveller" rel="noopener"><span class="mn">traveller</span><span class="md">spawn, homes and tpa in one plugin for paper and purpur servers.</span><span class="mt mono">paper · mit</span><span class="ml mono">github ↗</span></a></li>
+<li><a class="mrow" href="https://github.com/GoatTech-42/GoatpadV1" rel="noopener"><span class="mn">goatpad</span><span class="md">a macro pad with 7 keys and an oled screen. my hack club blueprint project.</span><span class="mt mono">hardware · mit</span><span class="ml mono">github ↗</span></a></li>
+<li><a class="mrow" href="https://github.com/GoatTech-42/goatbot" rel="noopener"><span class="mn">goatbot</span><span class="md">the bots i wrote for the defector game on hack club.</span><span class="mt mono">javascript · mit</span><span class="ml mono">github ↗</span></a></li>
+<li><a class="mrow" href="https://github.com/GoatTech-42/donutsmp-tracker" rel="noopener"><span class="mn">pulse</span><span class="md">an auction tracker for donutsmp with live prices.</span><span class="mt mono">javascript</span><span class="ml mono">github ↗</span></a></li>
+<li><a class="mrow" href="https://github.com/GoatTech-42/GOATEXPANSION" rel="noopener"><span class="mn">goat expansion</span><span class="md">a minecraft mod.</span><span class="mt mono">mod · mit</span><span class="ml mono">github ↗</span></a></li>
+<li><a class="mrow" href="https://github.com/GoatTech-42/Goated-World-Gen" rel="noopener"><span class="mn">goated world gen</span><span class="md">a datapack that makes world gen look a bit nicer.</span><span class="mt mono">datapack · mit</span><span class="ml mono">github ↗</span></a></li>
+</ul></div>
 
 <div class="log" id="log" hidden>
 <div class="top mono"><span>recent commits<span class="caret"></span></span><span></span></div>
