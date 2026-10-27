@@ -72,15 +72,14 @@ nav a:hover{opacity:1}
  color:transparent;-webkit-text-stroke:1.2px #f2f2f2;
  background:linear-gradient(#f2f2f2,#f2f2f2) 0 0/0% 100% no-repeat;-webkit-background-clip:text;background-clip:text;padding-bottom:.08em;transition:transform .45s var(--ease)}
 .plate.in h2{animation:fill 1.1s .15s var(--ease) forwards}
+.plate.filled h2{color:#f2f2f2;-webkit-text-stroke:0;background:none;animation:none}
 .plate h2 a{text-decoration:none;position:relative}
 .plate h2 a::after{content:"\2197";font-size:.32em;margin-left:.25em;color:#f2f2f2;-webkit-text-stroke:0;opacity:0;display:inline-block;transform:translate(-8px,6px);transition:opacity .25s,transform .3s var(--ease);vertical-align:top;-webkit-text-fill-color:#f2f2f2}
-.plate:hover h2{transform:translateX(14px)}
 .plate:hover h2 a::after,.plate h2 a:focus-visible::after{opacity:1;transform:none}
 .plate .d p{font-size:19px;line-height:1.5;max-width:27em;color:#d4d4d4;opacity:0;transform:translateY(12px);transition:opacity .8s .35s,transform .8s .35s var(--ease)}
 .plate.in .d p{opacity:1;transform:none}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.tags span{border:1px solid var(--dline);padding:3px 10px;border-radius:99px;color:var(--dmute);transition:border-color .2s,color .2s}
-.plate:hover .tags span{border-color:#777;color:#d4d4d4}
+.tags span{border:1px solid var(--dline);padding:3px 10px;border-radius:99px;color:var(--dmute);}
 .plate .s{color:var(--dmute);text-align:right;padding-top:20px;line-height:1.75}
 .plate .s b{display:block;font-weight:500;color:#f2f2f2}
 .plate .s .p{color:#f2f2f2}
@@ -107,13 +106,6 @@ nav a:hover{opacity:1}
 .links a{font-weight:500;border-bottom:2px solid var(--ink);text-decoration:none;padding-bottom:3px;transition:color .15s,border-color .15s}
 .links a:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 
-footer{border-top:1px solid var(--line);padding:26px 0 0;color:var(--mute);overflow:hidden}
-footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-footer .row a{color:var(--ink);padding:1px 3px;margin:-1px -3px;transition:background .15s,color .15s}footer .row a:hover,footer .row a:focus-visible{background:var(--ink);color:var(--paper)}
-.foot-word{font-weight:700;font-size:clamp(70px,21vw,340px);letter-spacing:-.07em;line-height:1;color:var(--ink);margin:32px 0 0;padding:0 .04em .24em;white-space:nowrap;display:flex}
-.foot-word span{display:inline-block;transform:translateY(100%);transition:transform 1s var(--ease);transition-delay:calc(var(--i)*55ms)}
-.foot-word.in span{transform:none}
-.foot-clip{overflow:hidden;padding-bottom:0}
 a:focus-visible{outline:2px solid currentColor;outline-offset:4px}
 .word.split{background:none;-webkit-text-stroke:0;color:transparent;padding-bottom:0}
 .word .ch{display:inline-block;color:transparent;-webkit-text-stroke:1.5px var(--ink);background:linear-gradient(var(--ink),var(--ink)) 0 0/0% 100% no-repeat;-webkit-background-clip:text;background-clip:text;padding:0 .01em .1em;will-change:transform,opacity}
@@ -124,18 +116,15 @@ a:focus-visible{outline:2px solid currentColor;outline-offset:4px}
 .band .track span:nth-child(3n+2){-webkit-text-stroke-color:#f2f2f2}
 .plate h2 a::before{content:"";position:absolute;inset:-56px -32px -56px -150px}
 .plate:has(a:focus-visible){outline:2px solid #f2f2f2;outline-offset:-2px}
-.plate>*{opacity:calc(1 - var(--d,0)*6.5)}
-@media (min-width:901px){.plate{position:sticky;top:61px;background:#141414}.plate:last-of-type{position:relative}.log{position:relative;z-index:2;background:#0a0a0a}.plate::before{top:0}}
-.chip{position:fixed;left:0;top:0;width:72px;height:72px;margin:18px 0 0 18px;border-radius:50%;background:#f2f2f2;color:#0a0a0a;display:none;place-items:center;font:500 12px/1 "Geist Mono",ui-monospace,monospace;pointer-events:none;z-index:40;transform:translate3d(-200px,-200px,0) scale(0)}
-@media (hover:hover){.chip{display:grid}}
-@media (prefers-reduced-motion:reduce){.chip{display:none!important}.word .ch{color:var(--ink);-webkit-text-stroke:0;background:none;animation:none}.plate>*{opacity:1}.band .track{transform:none!important}}
+@media (min-width:901px){.plate{position:sticky;top:61px;background:#141414}.plate:last-of-type{position:relative}.plate::before{top:0}}
+@media (prefers-reduced-motion:reduce){.word .ch{color:var(--ink);-webkit-text-stroke:0;background:none;animation:none}.band .track{transform:none!important}}
 
 
 .guide{position:fixed;left:0;right:0;top:0;height:1px;background:var(--acc);opacity:0;z-index:4;pointer-events:none;transition:opacity .3s}
 .rv{opacity:0;transform:translateY(16px);transition:opacity .8s,transform .8s var(--ease)}
 .rv.in{opacity:1;transform:none}
 .no-js .rv,.no-js .plate .d p{opacity:1;transform:none}
-.no-js .word{color:var(--ink);-webkit-text-stroke:0;background:none}.no-js .plate h2{color:#f2f2f2;-webkit-text-stroke:0;background:none}.no-js .plate::before{transform:scaleX(1)}.no-js .foot-word span{transform:none}
+.no-js .word{color:var(--ink);-webkit-text-stroke:0;background:none}.no-js .plate h2{color:#f2f2f2;-webkit-text-stroke:0;background:none}.no-js .plate::before{transform:scaleX(1)}
 
 @media (max-width:900px){
  .wrap{padding:0 20px}
@@ -143,48 +132,45 @@ a:focus-visible{outline:2px solid currentColor;outline-offset:4px}
  .hero-row{grid-template-columns:1fr;gap:32px}
  .plate{grid-template-columns:1fr;gap:12px;padding:44px 0}.plate .n{padding:0}
  .plate .s{text-align:left;padding:6px 0 0;display:flex;gap:18px;flex-wrap:wrap}.plate .s b{display:inline}
- .plate:hover h2{transform:none}
+ 
  .log li{grid-template-columns:1fr;gap:2px}.log li span:last-child{text-align:left}.log li span:nth-child(2){white-space:normal}
- .about{padding:90px 0 72px}.about .t{grid-template-columns:1fr;gap:28px}
+ .about{padding:90px 0 96px}.about .t{grid-template-columns:1fr;gap:28px}
  nav{gap:20px}.intro .tag{left:20px}
  .cue{display:none}
 }
-@media (hover:none){.guide{display:none}.plate h2 a::after{display:none}.plate:hover h2{transform:none}}
+@media (hover:none){.guide{display:none}.plate h2 a::after{display:none}}
 @media (prefers-reduced-motion:reduce){
  html{scroll-behavior:auto}.intro{display:none!important}.guide{display:none}
  .word{color:var(--ink);-webkit-text-stroke:0;background:none}.word em{color:var(--acc);-webkit-text-stroke:0}
  .plate h2{color:#f2f2f2;-webkit-text-stroke:0;background:none;animation:none!important}
  .plate::before{transform:scaleX(1);transition:none}
  .plate .d p,.rv,.log li{opacity:1;transform:none;transition:none}
- .about .big span{opacity:1}.foot-word span{transform:none;transition:none}
- .plate:hover h2{transform:none}.caret{animation:none}
+ .about .big span{opacity:1}
+ .caret{animation:none}
 }
 
 .more{position:relative;z-index:2;background:#141414;margin-top:56px}
 .more .top{padding:18px 0 8px;border-top:1px solid var(--dline)}
 .mlist{list-style:none}
-.mrow{display:grid;grid-template-columns:220px 1fr 170px 80px;gap:24px;align-items:baseline;padding:20px 0;border-top:1px solid var(--dline);text-decoration:none;min-height:56px;transition:background .15s,color .15s}
+.mrow{display:grid;grid-template-columns:200px 1fr 210px 80px;gap:24px;align-items:baseline;padding:20px 0;border-top:1px solid var(--dline);text-decoration:none;min-height:56px;transition:background .15s,color .15s}
 .mlist li:last-child .mrow{border-bottom:1px solid var(--dline)}
 .mn{font-weight:600;font-size:clamp(22px,2.4vw,30px);letter-spacing:-.03em;line-height:1.1}
 .md{color:#d4d4d4;font-size:17px;line-height:1.45;max-width:34em}
-.mt{color:var(--dmute)}
+.mt{color:var(--dmute);line-height:1.6;white-space:nowrap}
 .ml{text-align:right;color:#f2f2f2}
 .mrow:hover,.mrow:focus-visible{background:#f2f2f2;color:#0a0a0a;outline:none}
 .mrow:hover .md,.mrow:hover .mt,.mrow:hover .ml,.mrow:focus-visible .md,.mrow:focus-visible .mt,.mrow:focus-visible .ml{color:#0a0a0a}
-@media (hover:none){.mrow:hover{background:none;color:inherit}.mrow:hover .md{color:#d4d4d4}.mrow:hover .mt{color:var(--dmute)}.mrow:hover .ml{color:#f2f2f2}.mrow:active{background:#1f1f1f}}
+@media (hover:none){.mrow:hover{background:none;color:inherit}.mrow:hover .md{color:#d4d4d4}.mrow:hover .mt{color:var(--dmute);line-height:1.6;white-space:nowrap}.mrow:hover .ml{color:#f2f2f2}.mrow:active{background:#1f1f1f}}
 @media (max-width:900px){.mrow{grid-template-columns:1fr auto;gap:6px 16px;padding:18px 0}.md{grid-column:1/-1;font-size:16px}.mt{grid-column:1;grid-row:3}.ml{grid-column:2;grid-row:3}.mn{grid-column:1;grid-row:1}}
 /* phone fixes */
 .logo{display:inline-block;padding:12px 0;margin:-12px 0}
-@media (max-width:900px){.links a{display:inline-block;padding:16px 0 3px;margin-top:-16px}.more{margin-top:12px}footer .row a{padding:13px 8px;margin:-13px -8px}footer .row{align-items:center}}
-html{-webkit-text-size-adjust:100%;text-size-adjust:100%;overflow-x:clip}
-header{padding-top:env(safe-area-inset-top)}
+@media (max-width:900px){.links a{display:inline-block;padding:16px 0 3px;margin-top:-16px}.more{margin-top:12px}header{padding-top:env(safe-area-inset-top)}
 nav a{padding:12px 4px;margin:-12px -4px}
 @media (max-width:900px){nav{gap:14px}nav a{padding:14px 6px;margin:-14px -6px}.wrap{padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}}
 </style>
 </head>
 <body>
 <div class="intro" id="intro" aria-hidden="true"><div class="scan" id="scan"></div><span class="tag mono">goattech</span></div>
-<div class="chip" id="chip" aria-hidden="true">open &#8599;</div>
 <header><div class="wrap"><a class="logo" href="#top">goattech</a><nav><a href="#work">work</a><a href="#about">about</a><a href="https://github.com/GoatTech-42" rel="noopener">github</a></nav></div></header>
 <main id="top">
 <section class="hero" id="hero"><div class="frame" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
@@ -219,14 +205,13 @@ nav a{padding:12px 4px;margin:-12px -4px}
 <div class="s mono"><b class="p">&#9675; early</b>testing<br><span data-repo="goattech-forge"></span></div></article>
 
 <div class="more" id="more"><div class="top mono"><span>more</span><span></span></div><ul class="mlist">
-<li><a class="mrow" href="https://obsidian.goattech.us" rel="noopener"><span class="mn">obsidian</span><span class="md">a rust cryptography research project that runs in your browser. experimental, not for secrets.</span><span class="mt mono">research · wasm</span><span class="ml mono">live ↗</span></a></li>
-<li><a class="mrow" href="https://github.com/GoatTech-42/worldvault" rel="noopener"><span class="mn">worldvault</span><span class="md">a fabric mod that stores files in books inside a chest. experimental, singleplayer only.</span><span class="mt mono">fabric · mit</span><span class="ml mono">github ↗</span></a></li>
-<li><a class="mrow" href="https://github.com/GoatTech-42/Traveller" rel="noopener"><span class="mn">traveller</span><span class="md">spawn, homes and tpa in one plugin for paper and purpur servers.</span><span class="mt mono">paper · mit</span><span class="ml mono">github ↗</span></a></li>
-<li><a class="mrow" href="https://github.com/GoatTech-42/GoatpadV1" rel="noopener"><span class="mn">goatpad</span><span class="md">a macro pad with 7 keys and an oled screen. my hack club blueprint project.</span><span class="mt mono">hardware · mit</span><span class="ml mono">github ↗</span></a></li>
-<li><a class="mrow" href="https://github.com/GoatTech-42/goatbot" rel="noopener"><span class="mn">goatbot</span><span class="md">the bots i wrote for the defector game on hack club.</span><span class="mt mono">javascript · mit</span><span class="ml mono">github ↗</span></a></li>
-<li><a class="mrow" href="https://github.com/GoatTech-42/donutsmp-tracker" rel="noopener"><span class="mn">pulse</span><span class="md">an auction tracker for donutsmp with live prices.</span><span class="mt mono">javascript</span><span class="ml mono">github ↗</span></a></li>
-<li><a class="mrow" href="https://github.com/GoatTech-42/GOATEXPANSION" rel="noopener"><span class="mn">goat expansion</span><span class="md">a minecraft mod.</span><span class="mt mono">mod · mit</span><span class="ml mono">github ↗</span></a></li>
-<li><a class="mrow" href="https://github.com/GoatTech-42/Goated-World-Gen" rel="noopener"><span class="mn">goated world gen</span><span class="md">a datapack that makes world gen look a bit nicer.</span><span class="mt mono">datapack · mit</span><span class="ml mono">github ↗</span></a></li>
+<li><a class="mrow" href="https://github.com/GoatTech-42/donutsmp-tracker" rel="noopener"><span class="mn">pulse</span><span class="md">an auction tracker for donutsmp with live prices.</span><span class="mt mono">javascript<br>last commit 2026-10-16</span><span class="ml mono">github ↗</span></a></li>
+<li><a class="mrow" href="https://github.com/GoatTech-42/worldvault" rel="noopener"><span class="mn">worldvault</span><span class="md">a fabric mod that stores files in books inside a chest. experimental, singleplayer only.</span><span class="mt mono">fabric · mit<br>last commit 2026-10-11</span><span class="ml mono">github ↗</span></a></li>
+<li><a class="mrow" href="https://github.com/GoatTech-42/goatbot" rel="noopener"><span class="mn">goatbot</span><span class="md">the bots i wrote for the defector game on hack club.</span><span class="mt mono">javascript · mit<br>last commit 2026-09-04</span><span class="ml mono">github ↗</span></a></li>
+<li><a class="mrow" href="https://github.com/GoatTech-42/Traveller" rel="noopener"><span class="mn">traveller</span><span class="md">spawn, homes and tpa in one plugin for paper and purpur servers.</span><span class="mt mono">paper · mit<br>last commit 2026-06-13</span><span class="ml mono">github ↗</span></a></li>
+<li><a class="mrow" href="https://github.com/GoatTech-42/GoatpadV1" rel="noopener"><span class="mn">goatpad</span><span class="md">a macro pad with 7 keys and an oled screen. my hack club blueprint project.</span><span class="mt mono">hardware · mit<br>last commit 2026-01-06</span><span class="ml mono">github ↗</span></a></li>
+<li><a class="mrow" href="https://github.com/GoatTech-42/GOATEXPANSION" rel="noopener"><span class="mn">goat expansion</span><span class="md">a minecraft mod.</span><span class="mt mono">mod · mit<br>last commit 2025-08-31</span><span class="ml mono">github ↗</span></a></li>
+<li><a class="mrow" href="https://obsidian.goattech.us" rel="noopener"><span class="mn">obsidian</span><span class="md">a rust cryptography research project that runs in your browser. experimental, not for secrets.</span><span class="mt mono">research · wasm<br>live demo, no public repo, undated</span><span class="ml mono">live ↗</span></a></li>
 </ul></div>
 
 <div class="log" id="log" hidden>
@@ -237,11 +222,9 @@ nav a{padding:12px 4px;margin:-12px -4px}
 
 <section class="about" id="about"><div class="wrap"><div class="g">
 <p class="big" id="big">i'm luke. i like games, java and robots.</p>
-<div class="t"><div class="links rv"><a href="https://github.com/GoatTech-42" rel="noopener">github.com/GoatTech-42</a></div></div>
+<div class="t"><div class="links rv"><a href="https://lukeevanson.com">lukeevanson.com</a><a href="https://github.com/GoatTech-42" rel="noopener">github.com/GoatTech-42</a></div></div>
 </div></div></section>
 </main>
-<footer><div class="wrap"><div class="row mono"><span>goattech, 2026</span><span>my site: <a href="https://lukeevanson.com">lukeevanson.com</a></span></div>
-<div class="foot-clip"><div class="foot-word" id="fw" aria-hidden="true"></div></div></div></footer>
 
 <script>
 (function(){
@@ -252,8 +235,6 @@ function startPage(){
   setTimeout(function(){document.documentElement.classList.add('word-fill-done')},1900);
   document.querySelectorAll('.hero .rv').forEach(function(el,i){setTimeout(function(){el.classList.add('in')},500+i*140)});
 }
-// footer wordmark letters
-var fw=document.getElementById('fw');'goattech'.split('').forEach(function(c,i){var s=document.createElement('span');s.textContent=c;s.style.setProperty('--i',i);fw.appendChild(s)});
 // intro
 var intro=document.getElementById('intro');
 var seen=false;try{seen=sessionStorage.getItem('gt-intro')==='1'}catch(e){}
@@ -267,7 +248,7 @@ else{
 }
 // reveals
 var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.18});
-document.querySelectorAll('.plate,.about .rv,.foot-word').forEach(function(el){io.observe(el)});
+document.querySelectorAll('.plate,.about .rv').forEach(function(el){io.observe(el)});
 // scroll-linked word highlight (native scroll, no hijack)
 var big=document.getElementById('big'),words=big.textContent.split(' ');big.textContent='';
 words.forEach(function(w,i){var s=document.createElement('span');s.textContent=w+(i<words.length-1?' ':'');big.appendChild(s)});
@@ -279,21 +260,15 @@ var word=document.getElementById('word'),chs=[];
 if(!reduce){var t=word.textContent;word.textContent='';word.classList.add('split');t.split('').forEach(function(c,i){var e=document.createElement('span');e.className='ch';e.setAttribute('aria-hidden','true');e.style.setProperty('--i',i);e.textContent=c;word.appendChild(e);chs.push(e)})}
 // marquee band
 var track=document.getElementById('track');['meshac','ramjet','forge','meshac','ramjet','forge','meshac','ramjet','forge'].forEach(function(n){var e=document.createElement('span');e.textContent=n;track.appendChild(e)});
-// stacked project plates and scroll-linked bits, one passive handler
-var plates=[].slice.call(document.querySelectorAll('.plate')),frame=document.querySelector('.hero .frame'),tk=0;
+// scroll-linked hero and marquee, one passive handler
+var frame=document.querySelector('.hero .frame'),tk=0;
 function onScroll(){tk=0;if(reduce)return;var y=scrollY,h=innerHeight,p=Math.max(0,Math.min(1,y/(h*.85)));
  chs.forEach(function(e,i){e.style.transform='translate3d(0,'+(-p*(24+i*30))+'px,0)';e.style.opacity=1-p*.7});
  if(frame)frame.style.opacity=1-p;
- track.style.transform='translate3d('+(-y*.35)+'px,0,0)';
- if(innerWidth>900)plates.forEach(function(pl,i){var nx=plates[i+1];if(!nx){pl.style.setProperty('--d',0);return}var d=1-(nx.getBoundingClientRect().top-61)/(pl.offsetHeight||1);pl.style.setProperty('--d',Math.max(0,Math.min(1,d)).toFixed(3))})}
+ track.style.transform='translate3d('+(-y*.35)+'px,0,0)'}
 function req(){if(!tk){tk=1;requestAnimationFrame(onScroll)}}
 addEventListener('scroll',req,{passive:true});addEventListener('resize',req);onScroll();
-// cursor chip over projects (mouse only)
-var chip=document.getElementById('chip');
-if(!reduce&&matchMedia('(hover:hover)').matches){var cx=-200,cy=-200,tx=-200,ty=-200,on=0,raf=0;
- function loop(){cx+=(tx-cx)*.2;cy+=(ty-cy)*.2;chip.style.transform='translate3d('+cx+'px,'+cy+'px,0) scale('+(on?1:0)+')';if(Math.abs(tx-cx)>.3||Math.abs(ty-cy)>.3)raf=requestAnimationFrame(loop);else raf=0}
- addEventListener('mousemove',function(e){tx=e.clientX;ty=e.clientY;if(!raf)raf=requestAnimationFrame(loop)});
- plates.forEach(function(pl){pl.addEventListener('mouseenter',function(){on=1;chip.style.transition='transform .25s var(--ease)';if(!raf)raf=requestAnimationFrame(loop)});pl.addEventListener('mouseleave',function(){on=0;if(!raf)raf=requestAnimationFrame(loop)})})}
+document.querySelectorAll('.plate h2').forEach(function(h){h.addEventListener('animationend',function(){h.parentNode.classList.add('filled');h.closest('.plate').classList.add('filled')})});
 // github data
 function ago(d){var s=(Date.now()-new Date(d))/1000;if(s<3600)return Math.max(1,Math.round(s/60))+' min ago';if(s<86400)return Math.round(s/3600)+' hr ago';var n=Math.round(s/86400);return n+(n==1?' day ago':' days ago')}
 var repos=['meshac','ramjet','goattech-forge'],best=0;
