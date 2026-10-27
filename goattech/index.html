@@ -14,7 +14,8 @@
 <style>
 :root{--paper:#0a0a0a;--ink:#f2f2f2;--mute:#8f8f8f;--line:#333;--acc:#f2f2f2;--dline:#333;--dmute:#8f8f8f;--ease:cubic-bezier(.2,.8,.2,1)}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;color-scheme:dark;background:#0a0a0a}
+html{scroll-behavior:smooth;color-scheme:dark;background:#0a0a0a;scrollbar-width:none;-ms-overflow-style:none}
+html::-webkit-scrollbar,body::-webkit-scrollbar{display:none;width:0;height:0}
 body{background:var(--paper);color:var(--ink);font:400 17px/1.55 "Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}
 .mono{font-family:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
@@ -41,7 +42,7 @@ nav a:hover{opacity:1}
 
 /* scroll scene */
 .scene{position:relative;height:300vh;background:#0a0a0a;border-bottom:1px solid var(--dline)}
-.scene .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.scene .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;contain:paint}
 .scene canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .scene .cap{position:absolute;left:32px;top:92px;color:var(--dmute)}
 .scene .lines{list-style:none;position:absolute;left:32px;right:32px;bottom:9vh}
@@ -206,6 +207,7 @@ nav a{padding:12px 4px;margin:-12px -4px}
 <section class="work" id="work"><div class="wrap">
 <div class="top mono"><span>projects</span><span></span></div>
 
+<div class="stack">
 <article class="plate"><div class="n mono">01<br>2026-10</div>
 <h2><a href="https://github.com/GoatTech-42/meshac" rel="noopener">meshac</a></h2>
 <div class="d"><p>anticheat for fabric servers. first beta is out.</p>
@@ -224,6 +226,7 @@ nav a{padding:12px 4px;margin:-12px -4px}
 <div class="tags mono"><span>marlin 2.1</span><span>gpl-3.0</span><span>ender 3 v3 se</span></div></div>
 <div class="s mono"><b class="p">&#9675; early</b>testing<br><span data-repo="goattech-forge"></span></div></article>
 
+</div>
 <div class="more" id="more"><div class="top mono"><span>more</span><span></span></div><ul class="mlist">
 <li><a class="mrow" href="https://github.com/GoatTech-42/donutsmp-tracker" rel="noopener"><span class="mn">pulse</span><span class="md">an auction tracker for donutsmp with live prices.</span><span class="mt mono">javascript<br>last commit 2026-10-16</span><span class="ml mono">github ↗</span></a></li>
 <li><a class="mrow" href="https://github.com/GoatTech-42/worldvault" rel="noopener"><span class="mn">worldvault</span><span class="md">a fabric mod that stores files in books inside a chest. experimental, singleplayer only.</span><span class="mt mono">fabric · mit<br>last commit 2026-10-11</span><span class="ml mono">github ↗</span></a></li>
@@ -291,7 +294,7 @@ addEventListener('scroll',req,{passive:true});addEventListener('resize',req);onS
 document.querySelectorAll('.plate h2').forEach(function(h){h.addEventListener('animationend',function(){h.parentNode.classList.add('filled');h.closest('.plate').classList.add('filled')})});
 // scroll scene: wireframe terrain flown by the scroll position
 (function(){var sc=document.getElementById('scene'),cv=document.getElementById('cv');if(!sc||!cv)return;
-var lines=[].slice.call(document.querySelectorAll('#lines li')),cn=document.getElementById('cn'),ctx=cv.getContext('2d'),W=0,H=0,dpr=1,vis=false,tick=0,last=-1;
+var lines=[].slice.call(document.querySelectorAll('#lines li')),cn=document.getElementById('cn'),ctx=cv.getContext('2d'),W=0,H=0,dpr=1,vis=false,tick=0,last=-1,lk=-1;
 if(reduce||!ctx){sc.classList.add('static');return}
 function hash(x,z){var n=Math.sin(x*127.1+z*311.7)*43758.5453;return n-Math.floor(n)}
 function noise(x,z){var xi=Math.floor(x),zi=Math.floor(z),xf=x-xi,zf=z-zi,u=xf*xf*(3-2*xf),v=zf*zf*(3-2*zf);var a=hash(xi,zi),b=hash(xi+1,zi),c=hash(xi,zi+1),d=hash(xi+1,zi+1);return a+(b-a)*u+(c-a)*v+(a-b-c+d)*u*v}
@@ -307,8 +310,7 @@ function draw(){var p=prog();if(p===last)return;last=p;
   var my=0;ctx.beginPath();for(var i=-cols/2;i<=cols/2;i++){var x=i*cell,hh=hgt(x*1.0,wz,q);var px=W/2+(x*fl/d)*1.0,py=hor+fl*(cy-hh*(.85+p*.2))/d;if(i===-cols/2)ctx.moveTo(px,py);else ctx.lineTo(px,py);if(py>my)my=py}
   var fade=Math.max(0,Math.min(1,(H*.7-my)/(H*.25)));if(my>H*.7)a*=fade;ctx.strokeStyle='rgba(242,242,242,'+a.toFixed(3)+')';ctx.lineWidth=1;ctx.stroke()}
  var k=Math.min(3,Math.floor(p*4.0001)),pp=p*4-k;
- lines.forEach(function(li,i){li.classList.toggle('on',i===k);li.classList.toggle('off',i<k)});
- cn.textContent='0'+(k+1)+' / 04'}
+ if(k!==lk){lk=k;cn.textContent='0'+(k+1)+' / 04';lines.forEach(function(li,i){li.classList.toggle('on',i===k);li.classList.toggle('off',i<k)})}}
 function req(){if(!tick&&vis){tick=1;requestAnimationFrame(function(){tick=0;draw()})}}
 new IntersectionObserver(function(e){vis=e[0].isIntersecting;if(vis)req()},{rootMargin:'100px'}).observe(sc);
 addEventListener('scroll',req,{passive:true});addEventListener('resize',size);size();
