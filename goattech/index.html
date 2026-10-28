@@ -281,7 +281,9 @@ document.querySelectorAll('.plate,.about .rv').forEach(function(el){io.observe(e
 var big=document.getElementById('big'),words=big.textContent.split(' ');big.textContent='';
 words.forEach(function(w,i){var s=document.createElement('span');s.textContent=w+(i<words.length-1?' ':'');big.appendChild(s)});
 var spans=big.querySelectorAll('span');
-function lit(){if(reduce)return;var r=big.getBoundingClientRect(),h=innerHeight,p=(h*.85-r.top)/(h*.55+r.height*.4);p=Math.max(0,Math.min(1,p));var n=Math.round(p*spans.length);spans.forEach(function(s,i){s.classList.toggle('lit',i<n)})}
+// highlight starts as the sentence enters and must finish before the page ends:
+// the footer is the last section, so the ramp is spread over its visible scroll window
+function lit(){if(reduce)return;var r=big.getBoundingClientRect(),h=innerHeight,top=r.top+scrollY,smax=Math.max(0,document.documentElement.scrollHeight-h),start=top-h,end=Math.max(start+1,smax-h*.12),p=(scrollY-start)/(end-start);p=Math.max(0,Math.min(1,p));var n=Math.round(p*spans.length);spans.forEach(function(s,i){s.classList.toggle('lit',i<n)})}
 addEventListener('scroll',lit,{passive:true});addEventListener('resize',lit);lit();
 // hero letters: staggered fill, then scroll-linked drift
 var word=document.getElementById('word'),chs=[];
