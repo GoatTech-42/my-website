@@ -1,0 +1,4 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {cardSvg} from '../src/card.js';
+const c={name:'<script>alert(1)</script>',hp:100,maxHp:100,status:'IDLE',gear:['axe'],location:'Unset'};
+test('card API output escapes game text and names saved revision',()=>{const svg=cardSvg(c,{version:7,savedAt:'2026-10-30T15:00:00Z'});assert.ok(svg.includes('&lt;script&gt;'));assert.ok(!svg.includes('<script>'));assert.ok(svg.includes('Saved revision 7'));assert.ok(svg.includes('width="1080" height="720"'))});
+test('long names and class descriptions stay bounded and visibly mark excerpts',()=>{const svg=cardSvg({...c,name:'A'.repeat(180),classStyle:'A very long class description '.repeat(20)},{version:7,savedAt:'sample'});assert.match(svg,/…/);assert.match(svg,/Excerpt when shortened/);const texts=[...svg.matchAll(/<tspan[^>]*>([^<]*)<\/tspan>/g)].map(m=>m[1]);assert.ok(texts.every(t=>t.length<=59))});

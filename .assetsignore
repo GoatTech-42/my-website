@@ -5,3 +5,8 @@ src
 .github
 .wrangler
 node_modules
+
+# Isolated unpublished campaign project. Never serve its sources or private preparation files.
+brainrotrpg
+
+/brainrotrpg/**

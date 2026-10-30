@@ -1,0 +1,6 @@
+// Exact reviewed static allowlist. No campaign data, demos, source or auth registry.
+import fs from 'node:fs/promises';
+const allowed=[['/','index.html','text/html; charset=utf-8'],['/style.css','style.css','text/css; charset=utf-8'],['/app.js','app.js','text/javascript; charset=utf-8'],['/assets/golden.webp','assets/golden.webp','image/webp']];
+const entries=[];for(const [url,file,type] of allowed){const bytes=await fs.readFile(new URL('./public/'+file,import.meta.url));entries.push([url,{type,text:type==='image/webp'?null:bytes.toString('utf8')}])}
+await fs.writeFile(new URL('./src/inline-assets.js',import.meta.url),`// Generated exact static allowlist. Binary import avoids cold-request base64 decoding.\nimport golden from '../public/assets/golden.webp';\nconst files=new Map(${JSON.stringify(entries)});\nexport const inlineAssets={async fetch(request){const p=new URL(request.url).pathname;if(!['GET','HEAD'].includes(request.method)||!files.has(p))return new Response('Not found',{status:404});const f=files.get(p);return new Response(request.method==='HEAD'?null:(p==='/assets/golden.webp'?golden:f.text),{headers:{'Content-Type':f.type,'X-Content-Type-Options':'nosniff'}})}};\n`);
+console.log('Embedded exactly four static approved assets. No demo, portal, private or Registry data.');

@@ -1,0 +1,2 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {eventCardSvg} from '../src/card.js';
+test('event image repeats actual dice math, action and outcome without a reroll',()=>{const r={id:'r1',dice:[12],sides:20,modifier:2,total:14,action:'Open gate',outcome:'The gate opens',difficulty:13};const svg=eventCardSvg(r,{version:4,savedAt:'saved'});assert.match(svg,/12 \+ 2 = 14/);assert.match(svg,/DC 13/);assert.match(svg,/The gate opens/);assert.match(svg,/Open gate/);assert.match(svg,/height="1350"/)});

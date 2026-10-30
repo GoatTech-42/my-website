@@ -1,0 +1,16 @@
+{
+  "name": "brainrot-grimoire",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "preview": "node preview.mjs"
+  },
+  "devDependencies": {
+    "@xmldom/xmldom": "^0.9.12",
+    "miniflare": "5.20261023.3-beta",
+    "playwright": "^1.56.1",
+    "sharp": "^0.35.5",
+    "wrangler": "^4.156.0"
+  }
+}

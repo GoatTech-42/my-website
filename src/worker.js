@@ -7,6 +7,14 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
+    // Never expose the isolated campaign project through the public site.
+    let safePath;
+    try { safePath = decodeURIComponent(url.pathname).replace(/\\/g, "/").replace(/\/+/g, "/"); }
+    catch { return new Response("not found", { status: 404 }); }
+    if (safePath === "/brainrotrpg" || safePath.startsWith("/brainrotrpg/")) {
+      return new Response("not found", { status: 404 });
+    }
+
     if (COMPANY_HOSTS.has(url.hostname)) {
       const inner = new URL(url);
       inner.pathname = PREFIX + url.pathname; // pathname is already dot-segment normalized by URL
