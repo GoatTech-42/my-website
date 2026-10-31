@@ -3,3 +3,11 @@ test('inert renderer rejects trailing HTML, active elements, external references
 test('schema-valid family ZWJ emoji clipping never splits a surrogate and production renderer accepts it',async()=>{
  const dir=await fs.mkdtemp(path.join(os.tmpdir(),'rpg-emoji-'));try{const name='👨‍👩‍👧‍👦'.repeat(14)+'WW';const svg=cardSvg({name,classStyle:'Example',hp:1,maxHp:2,status:'Idle',location:'Unset'},{version:1,savedAt:'sample'});assert.ok(!/[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/u.test(svg));await fs.writeFile(path.join(dir,'emoji.svg'),svg);await renderCard(path.join(dir,'emoji.svg'),path.join(dir,'emoji.png'));assert.ok((await fs.stat(path.join(dir,'emoji.png'))).size>1000)}finally{await fs.rm(dir,{recursive:true,force:true})}
 });
+test('inert renderer accepts the 800px stats card and still rejects other heights',async()=>{
+ const dir=await fs.mkdtemp(path.join(os.tmpdir(),'rpg-render800-'));try{
+  const stats=cardSvg({name:'Kirk',classStyle:'Active',hp:55,maxHp:100,status:'Active',location:'Armored perch',stats:{deaths:0,damageDealt:20,damageTaken:120,healing:75}},{version:9,savedAt:'sample',snapshot:{title:'PvP Lobby'}});
+  await fs.writeFile(path.join(dir,'s.svg'),stats);await renderCard(path.join(dir,'s.svg'),path.join(dir,'s.png'));assert.ok((await fs.stat(path.join(dir,'s.png'))).size>1000);
+  const bad=stats.replace('height="800"','height="801"').replace('viewBox="0 0 1080 800"','viewBox="0 0 1080 801"');
+  await fs.writeFile(path.join(dir,'bad.svg'),bad);await assert.rejects(renderCard(path.join(dir,'bad.svg'),path.join(dir,'bad.png')));
+ }finally{await fs.rm(dir,{recursive:true,force:true})}
+});

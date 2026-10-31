@@ -7,7 +7,7 @@ export async function renderCard(input,output){
  if(parseError||doc.documentElement?.tagName!=='svg')throw Error('Unsafe SVG input');
  for(let n=doc.firstChild;n;n=n.nextSibling)if(n!==doc.documentElement&&!(n.nodeType===3&&!n.data.trim()))throw Error('Extra SVG content');
  function walk(n){if(n.nodeType===3)return;if(n.nodeType!==1||!allowed.has(n.tagName))throw Error('Unsafe SVG element');for(const a of Array.from(n.attributes))if(!attrs.has(a.name)||/url\s*\(|javascript:|data:/i.test(a.value))throw Error('Unsafe SVG attribute');for(let c=n.firstChild;c;c=c.nextSibling)walk(c)}walk(doc.documentElement);
- const width=Number(doc.documentElement.getAttribute('width')),height=Number(doc.documentElement.getAttribute('height'));if(width!==1080||![720,1350].includes(height))throw Error('Invalid card dimensions');
+ const width=Number(doc.documentElement.getAttribute('width')),height=Number(doc.documentElement.getAttribute('height'));if(width!==1080||![720,800,1350].includes(height))throw Error('Invalid card dimensions');
  // Art is a fixed local approved background, never an SVG-provided URL.
  const art=new URL('./public/assets/golden.webp',import.meta.url);
  const background=await sharp(await fs.readFile(art)).resize(width,height,{fit:'cover'}).toBuffer();
