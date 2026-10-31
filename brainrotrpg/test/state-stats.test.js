@@ -19,3 +19,9 @@ test('stats reject bad types, ranges, unknown keys and non-objects',()=>{
   {deaths:0,stealth:3},{},
  ])assert.throws(()=>validateSnapshot(snap({...base,stats})),/field|integer|object/i);
 });
+test('optional campaign title validates and is preserved; bad titles reject',()=>{
+ const s={...snap(base),title:'PvP Lobby'};
+ assert.deepEqual(validateSnapshot(s),s);
+ assert.throws(()=>validateSnapshot({...snap(base),title:'x'.repeat(101)}));
+ assert.throws(()=>validateSnapshot({...snap(base),title:42}));
+});

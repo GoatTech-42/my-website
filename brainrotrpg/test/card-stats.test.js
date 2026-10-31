@@ -18,3 +18,10 @@ test('all-null stats still render as explicit unknowns',()=>{
  const svg=cardSvg({...base,stats:{deaths:null,damageDealt:null,damageTaken:null,healing:null}},rec);
  assert.match(svg,/Deaths \?/);
 });
+test('card header uses snapshot title when present, default branding otherwise',()=>{
+ const withTitle=cardSvg(base,{...rec,snapshot:{title:'PvP Lobby'}});
+ assert.match(withTitle,/>PvP Lobby \/ Character status</);
+ assert.ok(!withTitle.includes('Brainrot RPG / Character status'));
+ const plain=cardSvg(base,rec);
+ assert.match(plain,/>Brainrot RPG \/ Character status</);
+});

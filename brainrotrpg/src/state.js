@@ -7,7 +7,9 @@ const number=(v,min,max)=>{if(typeof v!=='number'||!Number.isFinite(v)||v<min||v
 const list=(v,max,check)=>{if(!Array.isArray(v)||v.length>max)fail('invalid list');v.forEach(check);};
 const unique=arr=>{if(new Set(arr.map(x=>x.id)).size!==arr.length)fail('duplicate id');};
 export function validateSnapshot(s){
- obj(s,['characters','lore','rolls',...(s.world?['world']:[]),...(s.worldMap?['worldMap']:[])]);
+ obj(s,['characters','lore','rolls',...(s.world?['world']:[]),...(s.worldMap?['worldMap']:[]),...(s.title!==undefined?['title']:[])]);
+ // Optional campaign display title for card headers; absent means the default branding.
+ if(s.title!==undefined)text(s.title,100);
  if(s.worldMap){
   const wm=s.worldMap;const coord=v=>number(v,0,1000),opt=(o,k)=>o[k]!==undefined?[k]:[];obj(wm,['landmarks','party','bosses',...(wm.explored?['explored']:[])]);
   if(wm.explored){list(wm.explored,50,e=>{
