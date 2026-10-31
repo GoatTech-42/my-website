@@ -43,11 +43,14 @@ export function validateSnapshot(s){
  }
  if(s.world){obj(s.world,['zones_discovered','world_bosses_active','faction_territories_claimed','active_bounties','map']);['zones_discovered','world_bosses_active','faction_territories_claimed','active_bounties'].forEach(k=>integer(s.world[k],0,100000));text(s.world.map,10000);}
  list(s.characters,30,c=>{
-  obj(c,['id','name','classStyle','hp','maxHp','status','bonuses','gear','inventory','kills','wins','location','bio','pendingTraits',...(c.race!==undefined?['race']:[]),...(c.stats!==undefined?['stats']:[])]);if(c.race!==undefined&&c.race!==null)text(c.race,100);
+  obj(c,['id','name','classStyle','hp','maxHp','status','bonuses','gear','inventory','kills','wins','location','bio','pendingTraits',...(c.race!==undefined?['race']:[]),...(c.stats!==undefined?['stats']:[]),...(c.priorRounds!==undefined?['priorRounds']:[])]);if(c.race!==undefined&&c.race!==null)text(c.race,100);
   id(c.id); ['name','classStyle','location'].forEach(k=>text(c[k],100));text(c.status,500);text(c.bio,2000);
   integer(c.maxHp,1,100000);integer(c.hp,0,c.maxHp);integer(c.kills,0,100000);integer(c.wins,0,100000);
   // Optional durable combat counters. null means unknown, never zero.
   if(c.stats!==undefined){obj(c.stats,['deaths','damageDealt','damageTaken','healing']);['deaths','damageDealt','damageTaken','healing'].forEach(k=>{if(c.stats[k]!==null)integer(c.stats[k],0,100000)})}
+  // Optional labeled per-round kill/death record for earlier rounds. Current-round
+  // counters stay in kills/stats.deaths; prior-round records are never merged in.
+  if(c.priorRounds!==undefined){list(c.priorRounds,10,r=>{obj(r,['round','kills','deaths',...(r.source!==undefined?['source']:[])]);text(r.round,100);integer(r.kills,0,100000);integer(r.deaths,0,100000);if(r.source!==undefined)text(r.source,200);});}
   ['gear','inventory','pendingTraits'].forEach(k=>list(c[k],50,v=>text(v,1000)));
   list(c.bonuses,20,b=>{obj(b,['name','value']);text(b.name,40);integer(b.value,-100,100)});
  });unique(s.characters);
