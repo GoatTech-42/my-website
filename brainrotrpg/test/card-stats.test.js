@@ -9,12 +9,12 @@ test('card without stats keeps the 720px layout and no stats line',()=>{
  assert.match(svg,/height="720" viewBox="0 0 1080 720"/);
  assert.ok(!svg.includes('Deaths'));
 });
-test('card with stats grows to 800px and shows counters, em dash for unknown',()=>{
+test('card with stats grows to 800px and shows counters, question mark for unknown',()=>{
  const svg=cardSvg({...base,stats:{deaths:0,damageDealt:120,damageTaken:null,healing:75}},rec);
  assert.match(svg,/height="800" viewBox="0 0 1080 800"/);
- assert.match(svg,/Deaths 0 \u00b7 Dmg 120 dealt \/ \u2014 taken \u00b7 Healed 75/);
+ assert.match(svg,/Deaths 0 \u00b7 Dmg 120 dealt \/ \? taken \u00b7 Healed 75/);
 });
 test('all-null stats still render as explicit unknowns',()=>{
  const svg=cardSvg({...base,stats:{deaths:null,damageDealt:null,damageTaken:null,healing:null}},rec);
- assert.match(svg,/Deaths \u2014/);
+ assert.match(svg,/Deaths \?/);
 });
