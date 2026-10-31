@@ -1,0 +1,28 @@
+// Explicit isolated-fixture gate. Never run against production RECORD_SET.
+import fs from 'node:fs/promises';import assert from 'node:assert/strict';
+const origin='https://brainrotrpg.goattech.us';
+const secret=await fs.readFile(process.env.RPG_SECRET_FILE,'utf8');
+const evidence={startedAt:new Date().toISOString(),recordSet:'qualification-20261030',checks:[]};
+const call=async(path,{method='GET',body,cookie,service=false,originHeader=true}={})=>fetch(origin+path,{method,redirect:'manual',headers:{...(service?{authorization:'Bearer '+secret.trim()}:{}),...(body!==undefined?{'content-type':'application/json'}:{}),...(cookie?{cookie}:{}),...(originHeader?{origin}:{})},body:body===undefined?undefined:JSON.stringify(body)});
+const check=(name,actual,want)=>{assert.equal(actual,want,name);evidence.checks.push({name,status:actual})};
+check('anonymous state denied',(await call('/api/state')).status,401);
+check('issue missingOrigin denied',(await call('/auth/issue',{method:'POST',originHeader:false})).status,403);
+const issued=await call('/auth/issue',{method:'POST'});check('browser issue',issued.status,200);const first=issued.headers.get('set-cookie');assert.match(first,/Secure; HttpOnly; SameSite=Strict/);const challenge=await issued.json();assert.equal(challenge.secret,undefined);const oldCookie=first.split(';')[0];
+const now=Date.now(),id='QA-live-'+now;
+check('fictional fixture member',(await call('/auth/member',{method:'POST',service:true,body:{memberKey:'member-99',active:true,sourceMessageId:id+'-fixture-member',sourceAt:now,validUntil:now+600000}})).status,200);
+check('fictional fixture approve',(await call('/auth/approve',{method:'POST',service:true,body:{memberKey:'member-99',challenge:challenge.challenge,sourceMessageId:id+'-fixture-code',sourceAt:Date.now()}})).status,200);
+const claim=await call('/auth/claim',{method:'POST',cookie:oldCookie});check('claim',claim.status,200);const cookie=claim.headers.get('set-cookie').split(';')[0];assert.notEqual(cookie,oldCookie);assert.equal((await claim.json()).secret,undefined);
+check('old cookie replay',(await call('/auth/claim',{method:'POST',cookie:oldCookie})).status,401);
+check('viewer export denied',(await call('/api/export',{cookie})).status,403);check('viewer writes denied',(await call('/api/state',{method:'PUT',cookie,body:{}})).status,403);
+const snapshot={characters:[{id:'qa-only',name:'QA fixture - not campaign canon',classStyle:'Test only',hp:50,maxHp:100,status:'QA',bonuses:[],gear:[],inventory:[],kills:0,wins:0,location:'Qualification only',bio:'Synthetic access and recovery test. Not a player.',pendingTraits:[]}],lore:[],rolls:[]};
+const before=await call('/api/state',{service:true});check('fresh qualification object',before.status,404);
+const update={updateId:id+'-one',expectedVersion:0,snapshot};const save=await call('/api/state',{method:'PUT',service:true,body:update});check('initial CAS',save.status,200);assert.equal((await save.json()).version,1);
+const state=await (await call('/api/state',{service:true})).json();assert.deepEqual(state.snapshot,snapshot);assert.equal(state.version,1);evidence.checks.push({name:'canonical readback',version:1});
+const retry=await call('/api/state',{method:'PUT',service:true,body:update});assert.equal((await retry.json()).version,1);check('stale conflict',(await call('/api/state',{method:'PUT',service:true,body:{...update,updateId:id+'-stale'}})).status,409);
+const changed=structuredClone(snapshot);changed.characters[0].hp=49;check('second CAS',(await call('/api/state',{method:'PUT',service:true,body:{updateId:id+'-two',expectedVersion:1,snapshot:changed}})).status,200);
+const history=await (await call('/api/history/1',{service:true})).json();assert.deepEqual(history.snapshot,snapshot);
+check('restore as NEW revision',(await call('/api/state',{method:'PUT',service:true,body:{updateId:id+'-restore',expectedVersion:2,snapshot:history.snapshot}})).status,200);const restored=await (await call('/api/state',{service:true})).json();assert.equal(restored.version,3);assert.deepEqual(restored.snapshot,snapshot);
+const svg=await call('/api/cards/qa-only.svg?version=3',{service:true});check('versioned card',svg.status,200);assert.match(svg.headers.get('content-type'),/^image\/svg\+xml/);await fs.writeFile('/downloads/rpg-live-qa-card.svg',await svg.text(),{mode:0o600,flag:'wx'});check('old card conflict',(await call('/api/cards/qa-only.svg?version=1',{service:true})).status,409);
+check('viewer state read',(await call('/api/state',{cookie})).status,200);for(const p of ['/','/style.css','/app.js','/assets/golden.webp'])check('viewer asset '+p,(await call(p,{cookie})).status,200);
+check('fixture revoke',(await call('/auth/member',{method:'POST',service:true,body:{memberKey:'member-99',active:false,sourceMessageId:id+'-fixture-revoke',sourceAt:Date.now(),validUntil:Date.now()+600000}})).status,200);check('revoked viewer',(await call('/api/state',{cookie})).status,401);
+evidence.finishedAt=new Date().toISOString();evidence.warning='Fictional fixture mechanics only. Not original-member identity proof or canonical handoff.';await fs.writeFile('/downloads/rpg-live-qualification.json',JSON.stringify(evidence,null,2),{mode:0o600,flag:'wx'});console.log('Isolated qualification checks passed; fixture revoked.');

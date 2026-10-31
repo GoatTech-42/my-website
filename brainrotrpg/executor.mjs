@@ -9,11 +9,11 @@ else if(command==='export')pathname='/api/export';
 else if(command==='write'){pathname='/api/state';method='PUT';body=await fs.readFile(args[0],'utf8')}
 else if(command==='member'||command==='approve'){pathname='/auth/'+command;method='POST';body=await fs.readFile(args[0],'utf8')}
 else if(command==='history'){if(!/^\d+$/.test(args[0]))throw Error('Revision required');pathname='/api/history/'+args[0]}
-else if(command==='card'||command==='event'){if(!/^[A-Za-z0-9-]{1,80}$/.test(args[0])||!/^\d+$/.test(args[1]))throw Error('ID and explicit revision required');pathname=`/api/${command==='card'?'cards':'events'}/${args[0]}.svg?version=${args[1]}`}
-else throw Error('Usage: state|export|write FILE|member FILE|approve FILE|history REV|card ID REV OUTPUT|event ID REV OUTPUT');
+else if(command==='card'||command==='event'||command==='boss'){if(!/^[A-Za-z0-9-]{1,80}$/.test(args[0])||!/^\d+$/.test(args[1]))throw Error('ID and explicit revision required');pathname=`/api/${command==='card'?'cards':command==='event'?'events':'map/bosses'}/${args[0]}.svg?version=${args[1]}`}
+else throw Error('Usage: state|export|write FILE|member FILE|approve FILE|history REV|card ID REV OUTPUT|event ID REV OUTPUT|boss ID REV OUTPUT');
 const r=await fetch(origin+pathname,{method,redirect:'error',headers:{authorization:'Bearer '+secret,...(body?{'content-type':'application/json'}:{})},body});
 if(!r.ok){let error;try{error=(await r.json()).error}catch{error='Request rejected'}throw Error(`RPG HTTP ${r.status}: ${error}`)}
-if(command==='card'||command==='event'){
+if(command==='card'||command==='event'||command==='boss'){
  if(!args[2])throw Error('Output file required');
  if(r.headers.get('content-type')?.split(';')[0]!=='image/svg+xml')throw Error('Unexpected image response');
  const svg=await r.text();let bad=false;const doc=new DOMParser({onError:()=>{bad=true}}).parseFromString(svg,'image/svg+xml');

@@ -151,3 +151,6 @@ body.motion-io:not(.paused) .reveal.in-view{animation:rise-view .7s var(--ease) 
 
 /* Pause ambient pseudo-elements outside the viewport, including hidden tabs. */
 .ambient-offscreen *,.ambient-offscreen *::before,.ambient-offscreen *::after,body.paused *::before,body.paused *::after{animation-play-state:paused!important}
+
+/* Group-supplied arena schematic: proposed layout, clearly captioned. */
+.arena-schematic{margin:64px 0 0}.arena-schematic img{width:100%;height:auto;display:block;border:1px solid var(--raised);background:#eaf9ff}.arena-schematic figcaption{font-size:13px;color:var(--muted);margin-top:12px;max-width:76ch}

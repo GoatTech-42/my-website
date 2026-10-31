@@ -1,0 +1,25 @@
+{
+  "name": "brainrotrpg-staging-rehearsal",
+  "main": "src/inline-worker.js",
+  "compatibility_date": "2026-08-06",
+  "workers_dev": true,
+  "preview_urls": false,
+  "durable_objects": {
+    "bindings": [
+      { "name": "CAMPAIGN", "class_name": "Campaign" },
+      { "name": "REGISTRY", "class_name": "Registry" }
+    ]
+  },
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["Campaign"] },
+    { "tag": "v2", "new_sqlite_classes": ["Registry"] }
+  ],
+  "build": { "command": "node prepare-inline-assets.mjs" },
+  "rules": [ { "type": "Data", "globs": ["**/*.webp"], "fallthrough": true } ],
+  "vars": {
+    "AUTH_MODE": "registry",
+    "SITE_HOST": "brainrotrpg-staging-rehearsal.luke-p-evanson.workers.dev",
+    "MEMBERSHIP_GRANT_MAX_MS": "86400000",
+    "RECORD_SET": "qualification-20261030"
+  }
+}
