@@ -5,3 +5,6 @@ src
 .github
 .wrangler
 node_modules
+package.json
+package-lock.json
+test
