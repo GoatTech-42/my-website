@@ -78,6 +78,12 @@ class HomepageTest(unittest.TestCase):
         self.assertGreaterEqual(state['lead'], 34)
         self.assertLessEqual(state['scroll'], 2560)
 
+    def test_wide_push_timestamps_stay_inside_work_rule(self):
+        self.load(width=2560)
+        time.sleep(.7)
+        state = self.value('({right:document.querySelector(".work > .wrap").getBoundingClientRect().right-48,ends:[...document.querySelectorAll("[data-repo]")].map(el=>el.getBoundingClientRect().right)})')
+        self.assertTrue(all(right <= state['right'] + 1 for right in state['ends']), state)
+
     @classmethod
     def tearDownClass(cls):
         cls.ws.close()
