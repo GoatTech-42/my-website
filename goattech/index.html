@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>goattech</title>
-<meta name="description" content="goattech: minecraft stuff, a web proxy, printer firmware, a macro pad and a few other things.">
+<meta name="description" content="goattech: minecraft mods, an ai gateway, printer firmware and a few other things.">
 <meta name="theme-color" content="#0a0a0a"><meta name="color-scheme" content="dark">
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="fonts/fonts.css">
@@ -96,7 +96,7 @@ nav a:hover{opacity:1}
 .plate.in .d p{opacity:1;transform:none}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
 .tags span{border:1px solid var(--dline);padding:3px 10px;border-radius:99px;color:var(--dmute);}
-.plate .s{color:var(--dmute);text-align:right;padding-top:20px;line-height:1.75}
+.plate .s{white-space:nowrap;color:var(--dmute);text-align:right;padding-top:20px;line-height:1.75}
 .plate .s b{display:block;font-weight:500;color:#f2f2f2}
 .plate .s .p{color:#f2f2f2}
 .log{margin-top:44px;border-top:1px solid var(--dline)}
@@ -180,9 +180,28 @@ a:focus-visible{outline:2px solid currentColor;outline-offset:4px}
 @media (max-width:900px){.mrow{grid-template-columns:1fr auto;gap:6px 16px;padding:18px 0}.md{grid-column:1/-1;font-size:16px}.mt{grid-column:1;grid-row:3}.ml{grid-column:2;grid-row:3}.mn{grid-column:1;grid-row:1}}
 /* phone fixes */
 .logo{display:inline-block;padding:12px 0;margin:-12px 0}
-@media (max-width:900px){.links a{display:inline-block;padding:16px 0 3px;margin-top:-16px}.more{margin-top:12px}header{padding-top:env(safe-area-inset-top)}
+@media (max-width:900px){.links a{display:inline-block;padding:16px 0 3px;margin-top:-16px}.more{margin-top:12px}header{padding-top:env(safe-area-inset-top)}}
 nav a{padding:12px 4px;margin:-12px -4px}
 @media (max-width:900px){nav{gap:14px}nav a{padding:14px 6px;margin:-14px -6px}.wrap{padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}}
+.ml svg{vertical-align:-3px}.fork-note{display:block;color:var(--dmute);font-size:14px}.mn{overflow-wrap:anywhere}.plate h2 a::after{content:none}.plate h2 svg{width:.4em;height:.4em;vertical-align:.1em}
+@media(min-width:1921px){.wrap{max-width:1920px;margin-inline:auto}.hero .frame{left:max(32px,calc((100vw - 1920px)/2));right:max(32px,calc((100vw - 1920px)/2))}.word{font-size:360px}}
+.plate .d p{opacity:1;transform:none}.plate h2 svg{color:var(--ink)}
+/* Reading stays independent of reveal timing. Hero motion is unchanged. */
+.plate h2,.plate.in h2,.plate.filled h2{color:#f2f2f2;-webkit-text-stroke:0;background:none;animation:none;min-width:0;line-height:1.02}
+.plate h2 a{display:inline-block}.plate h2 svg{vertical-align:top;margin-top:.1em}
+.log li{opacity:1;transform:none;transition:none}
+.mrow{grid-template-columns:minmax(290px,1.15fr) 2fr 210px 90px}.mn{overflow-wrap:normal}
+@media(min-width:1921px){
+ .wrap{max-width:2440px;padding-inline:48px}.hero .frame{left:max(48px,calc((100vw - 2344px)/2));right:max(48px,calc((100vw - 2344px)/2))}
+ body{font-size:clamp(22px,1.1vw,30px)}.mono{font-size:clamp(18px,.85vw,24px)}.logo{font-size:25px}nav a{font-size:20px}header .wrap{height:76px}
+ .plate{grid-template-columns:140px 1.5fr 1.3fr 200px;gap:44px;padding-block:72px}.plate .d p{font-size:clamp(26px,1.25vw,34px)}.plate h2{font-size:clamp(124px,5.4vw,150px)}
+ .mrow{grid-template-columns:minmax(330px,1.15fr) 2fr 260px 120px;gap:36px;padding-block:28px}.md{font-size:clamp(24px,1.15vw,32px)}.mn{font-size:42px}.fork-note{font-size:23px}.ml svg{width:24px;height:24px}
+ .log li{grid-template-columns:300px 1fr 160px;padding-block:24px;gap:40px}.more .top,.log .top{padding-block:25px}
+}
+@media(max-width:900px){
+ .hero{min-height:70svh;padding-top:108px;justify-content:center}.hero .meta{margin-bottom:30px;padding-top:0}.hero .frame{left:20px;right:20px;top:76px;bottom:16px}.hero-row{margin-top:30px;gap:26px}
+ .hero .wrap{width:100%}.mrow{grid-template-columns:1fr auto}.plate h2{font-size:clamp(50px,12vw,90px)}
+}
 </style>
 </head>
 <body>
@@ -194,7 +213,7 @@ nav a{padding:12px 4px;margin:-12px -4px}
 <div class="meta mono rv"><span>goattech</span><span>2026</span></div>
 <h1 class="word" id="word" aria-label="goattech">goattech</h1>
 <div class="hero-row">
-<p class="lead rv">minecraft stuff, a web proxy, printer firmware, a macro pad and a few other things. most of the code's on github.</p>
+<p class="lead rv">minecraft mods, an ai gateway, printer firmware and a few other things. most of the code's on github.</p>
 <div class="ledger mono rv"><span>code</span><b>github.com/GoatTech-42</b><span>latest push</span><b id="latest">see github</b></div>
 </div></div></section>
 
@@ -206,11 +225,11 @@ nav a{padding:12px 4px;margin:-12px -4px}
 <div class="top mono"><span>projects</span><span></span></div>
 
 <div class="stack">
-<article class="plate"><div class="n mono">01<br>2026-09</div>
-<h2><a href="https://github.com/GoatTech-42/ramjet" rel="noopener">ramjet</a></h2>
-<div class="d"><p>a web proxy built on scramjet v2. i use it myself.</p>
-<div class="tags mono"><span>scramjet v2</span><span>web proxy</span><span>self-hosted</span></div></div>
-<div class="s mono"><b>&#9679; in use</b>personal<br><span data-repo="ramjet"></span></div></article>
+<article class="plate"><div class="n mono">01<br>2026-11</div>
+<h2><a href="https://aqua.goattech.us" rel="noopener">aqua</a></h2>
+<div class="d"><p>an openai-compatible gateway for free ai models.</p>
+<div class="tags mono"><span>ai gateway</span><span>open source</span></div></div>
+<div class="s mono"><b>open source</b><a href="https://github.com/GoatTech-42/aqua" rel="noopener">source</a><br><span data-repo="aqua"></span></div></article>
 
 <article class="plate"><div class="n mono">02<br>2026-10</div>
 <h2><a href="https://github.com/GoatTech-42/goattech-forge" rel="noopener">forge</a></h2>
@@ -223,20 +242,26 @@ nav a{padding:12px 4px;margin:-12px -4px}
 <div class="tags mono"><span>fabric</span><span>java</span><span>mit</span></div></div>
 <div class="s mono"><b class="p">&#9675; early</b>in development<br><span data-repo="tally"></span></div></article>
 <article class="plate"><div class="n mono">04<br>2026-10</div>
-<h2><a href="https://github.com/GoatTech-42/goattech-launcher" rel="noopener">goattech launcher</a></h2>
+<h2><a href="https://github.com/GoatTech-42/goattech-launcher" rel="noopener">goattech<br>launcher</a></h2>
 <div class="d"><p>a minecraft launcher, forked from horizon. rust engine and java edition instances side by side, with fabric/quilt and modrinth. still in development.</p>
 <div class="tags mono"><span>rust</span><span>minecraft</span><span>mit</span></div></div>
 <div class="s mono"><b class="p">&#9675; early</b>in development<br><span data-repo="goattech-launcher"></span></div></article>
 
 </div>
 <div class="more" id="more"><div class="top mono"><span>more</span><span></span></div><ul class="mlist">
-<li><a class="mrow" href="https://obsidian.goattech.us" rel="noopener"><span class="mn">obsidian</span><span class="md">a rust cryptography research project that runs in your browser. experimental, not for secrets.</span><span class="mt mono">research · wasm<br>last commit 2026-10-26</span><span class="ml mono">live ↗</span></a></li>
-<li><a class="mrow" href="https://github.com/GoatTech-42/donutsmp-tracker" rel="noopener"><span class="mn">pulse</span><span class="md">an auction tracker for donutsmp with live prices.</span><span class="mt mono">javascript<br>last commit 2026-10-16</span><span class="ml mono">github ↗</span></a></li>
-<li><a class="mrow" href="https://github.com/GoatTech-42/worldvault" rel="noopener"><span class="mn">worldvault</span><span class="md">a fabric mod that stores files in books inside a chest. experimental, singleplayer only.</span><span class="mt mono">fabric · mit<br>last commit 2026-10-11</span><span class="ml mono">github ↗</span></a></li>
-<li><a class="mrow" href="https://github.com/GoatTech-42/goatbot" rel="noopener"><span class="mn">goatbot</span><span class="md">the bots i wrote for the defector game on hack club.</span><span class="mt mono">javascript · mit<br>last commit 2026-09-04</span><span class="ml mono">github ↗</span></a></li>
-<li><a class="mrow" href="https://github.com/GoatTech-42/Traveller" rel="noopener"><span class="mn">traveller</span><span class="md">spawn, homes and tpa in one plugin for paper and purpur servers.</span><span class="mt mono">paper · mit<br>last commit 2026-06-13</span><span class="ml mono">github ↗</span></a></li>
-<li><a class="mrow" href="https://github.com/GoatTech-42/GoatpadV1" rel="noopener"><span class="mn">goatpad</span><span class="md">a macro pad with 7 keys and an oled screen. my hack club blueprint project.</span><span class="mt mono">hardware · mit<br>last commit 2026-01-06</span><span class="ml mono">github ↗</span></a></li>
-<li><a class="mrow" href="https://github.com/GoatTech-42/GOATEXPANSION" rel="noopener"><span class="mn">goat expansion</span><span class="md">a minecraft mod.</span><span class="mt mono">mod · mit<br>last commit 2025-08-31</span><span class="ml mono">github ↗</span></a></li>
+<!-- catalog:start -->
+<li><a class="mrow" href="https://github.com/GoatTech-42/lichii" rel="noopener"><span class="mn">lichii</span><span class="md">just my personal build for testing and making prs <span class="fork-note">contribution fork</span></span><span class="mt mono">C++<br>pushed 2026-11-24</span><span class="ml">github <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></span></a></li>
+<li><a class="mrow" href="https://github.com/GoatTech-42/traveller" rel="noopener"><span class="mn">traveller</span><span class="md">configurable transport plugin for paper that includes /home and like /tpa</span><span class="mt mono">Java<br>pushed 2026-11-24</span><span class="ml">github <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></span></a></li>
+<li><a class="mrow" href="https://github.com/GoatTech-42/easyeconomy" rel="noopener"><span class="mn">easyeconomy</span><span class="md">simple and configurable economy mod for 26.3, server side and compatible with geysermc clients</span><span class="mt mono">Java<br>pushed 2026-11-24</span><span class="ml">github <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></span></a></li>
+<li><a class="mrow" href="https://github.com/GoatTech-42/nebula-cdn" rel="noopener"><span class="mn">nebula-cdn</span><span class="md">not html game files</span><span class="mt mono">Python<br>pushed 2026-11-23</span><span class="ml">github <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></span></a></li>
+<li><a class="mrow" href="https://github.com/GoatTech-42/obsidian" rel="noopener"><span class="mn">obsidian</span><span class="md">cool encryption algorithm isnt that good yet tho</span><span class="mt mono">JavaScript<br>pushed 2026-11-22</span><span class="ml">github <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></span></a></li>
+<li><a class="mrow" href="https://github.com/GoatTech-42/worldvault" rel="noopener"><span class="mn">worldvault</span><span class="md">storing files inside your minecraft world</span><span class="mt mono">Java<br>pushed 2026-11-19</span><span class="ml">github <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></span></a></li>
+<li><a class="mrow" href="https://github.com/GoatTech-42/goatbot" rel="noopener"><span class="mn">goatbot</span><span class="md">all my bots for defector.hackclub.com</span><span class="mt mono">JavaScript<br>pushed 2026-11-18</span><span class="ml">github <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></span></a></li>
+<li><a class="mrow" href="https://github.com/GoatTech-42/mc-headless" rel="noopener"><span class="mn">mc-headless</span><span class="md">used for the drcoconut smp to afk farms</span><span class="mt mono">JavaScript<br>pushed 2026-11-17</span><span class="ml">github <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></span></a></li>
+<li><a class="mrow" href="https://github.com/GoatTech-42/burrow" rel="noopener"><span class="mn">burrow</span><span class="md">tunnel traffic thru an mc server</span><span class="mt mono">source<br>pushed 2026-10-10</span><span class="ml">github <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></span></a></li>
+<li><a class="mrow" href="https://github.com/GoatTech-42/goatpad-v1" rel="noopener"><span class="mn">goatpad-v1</span><span class="md">macropad for hc blueprint</span><span class="mt mono">Python<br>pushed 2026-01-06</span><span class="ml">github <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></span></a></li>
+<li><a class="mrow" href="https://github.com/GoatTech-42/goatexpansion" rel="noopener"><span class="mn">goatexpansion</span><span class="md">just jars for the mod i made awhile ago</span><span class="mt mono">source<br>pushed 2025-08-31</span><span class="ml">github <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></span></a></li>
+<!-- catalog:end -->
 </ul></div>
 
 <div class="log" id="log" hidden>
@@ -286,7 +311,7 @@ addEventListener('scroll',lit,{passive:true});addEventListener('resize',lit);lit
 var word=document.getElementById('word'),chs=[];
 if(!reduce){var t=word.textContent;word.textContent='';word.classList.add('split');t.split('').forEach(function(c,i){var e=document.createElement('span');e.className='ch';e.setAttribute('aria-hidden','true');e.style.setProperty('--i',i);e.textContent=c;word.appendChild(e);chs.push(e)})}
 // marquee band
-var track=document.getElementById('track');['ramjet','forge','tally','launcher','ramjet','forge','tally','launcher','ramjet','forge','tally','launcher'].forEach(function(n){var e=document.createElement('span');e.textContent=n;track.appendChild(e)});
+var track=document.getElementById('track');['aqua','forge','tally','goattech launcher','aqua','forge','tally','goattech launcher','aqua','forge','tally','goattech launcher'].forEach(function(n){var e=document.createElement('span');e.textContent=n;track.appendChild(e)});
 // scroll-linked hero and marquee, one passive handler
 var frame=document.querySelector('.hero .frame'),tk=0;
 function onScroll(){tk=0;if(reduce)return;var y=scrollY,h=innerHeight,p=Math.max(0,Math.min(1,y/(h*.85)));
@@ -321,7 +346,7 @@ addEventListener('scroll',req,{passive:true});addEventListener('resize',size);si
 })();
 // github data
 function ago(d){var s=(Date.now()-new Date(d))/1000;if(s<3600)return Math.max(1,Math.round(s/60))+' min ago';if(s<86400)return Math.round(s/3600)+' hr ago';var n=Math.round(s/86400);return n+(n==1?' day ago':' days ago')}
-var repos=['ramjet','goattech-forge','tally','goattech-launcher'],best=0;
+var repos=['aqua','goattech-forge','tally','goattech-launcher'],best=0;
 Promise.all(repos.map(function(r){return fetch('https://api.github.com/repos/GoatTech-42/'+r).then(function(x){return x.ok?x.json():null}).catch(function(){return null})})).then(function(a){
 a.forEach(function(j,i){if(!j)return;var el=document.querySelector('[data-repo="'+repos[i]+'"]');if(el)el.textContent='pushed '+ago(j.pushed_at);var t=new Date(j.pushed_at).getTime();if(t>best)best=t});
 document.getElementById('latest').textContent=best?ago(best):'see github'});
@@ -335,5 +360,6 @@ var lg=document.getElementById('log');lg.hidden=false;
 var lio=new IntersectionObserver(function(es){if(es[0].isIntersecting){lio.disconnect();ul.querySelectorAll('li').forEach(function(li,i){setTimeout(function(){li.classList.add('on')},reduce?0:i*140)})}},{threshold:.2});lio.observe(lg)});
 })();
 </script>
+<script type="module" src="catalog-refresh.mjs"></script>
 </body>
 </html>

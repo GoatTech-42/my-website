@@ -1,0 +1,137 @@
+{
+  "checked_at": "2026-11-25T16:09:22.768Z",
+  "projects": [
+    {
+      "name": "lichii",
+      "full_name": "GoatTech-42/lichii",
+      "html_url": "https://github.com/GoatTech-42/lichii",
+      "description": "just my personal build for testing and making prs",
+      "language": "C++",
+      "pushed_at": "2026-11-24T23:17:55Z",
+      "private": false,
+      "archived": false,
+      "size": 193089,
+      "fork": true
+    },
+    {
+      "name": "traveller",
+      "full_name": "GoatTech-42/traveller",
+      "html_url": "https://github.com/GoatTech-42/traveller",
+      "description": "configurable transport plugin for paper that includes /home and like /tpa",
+      "language": "Java",
+      "pushed_at": "2026-11-24T18:41:16Z",
+      "private": false,
+      "archived": false,
+      "size": 29,
+      "fork": false
+    },
+    {
+      "name": "easyeconomy",
+      "full_name": "GoatTech-42/easyeconomy",
+      "html_url": "https://github.com/GoatTech-42/easyeconomy",
+      "description": "simple and configurable economy mod for 26.3, server side and compatible with geysermc clients",
+      "language": "Java",
+      "pushed_at": "2026-11-24T17:40:29Z",
+      "private": false,
+      "archived": false,
+      "size": 322,
+      "fork": false
+    },
+    {
+      "name": "nebula-cdn",
+      "full_name": "GoatTech-42/nebula-cdn",
+      "html_url": "https://github.com/GoatTech-42/nebula-cdn",
+      "description": "not html game files",
+      "language": "Python",
+      "pushed_at": "2026-11-23T04:41:26Z",
+      "private": false,
+      "archived": false,
+      "size": 2703884,
+      "fork": false
+    },
+    {
+      "name": "obsidian",
+      "full_name": "GoatTech-42/obsidian",
+      "html_url": "https://github.com/GoatTech-42/obsidian",
+      "description": "cool encryption algorithm isnt that good yet tho",
+      "language": "JavaScript",
+      "pushed_at": "2026-11-22T19:28:26Z",
+      "private": false,
+      "archived": false,
+      "size": 245,
+      "fork": false
+    },
+    {
+      "name": "worldvault",
+      "full_name": "GoatTech-42/worldvault",
+      "html_url": "https://github.com/GoatTech-42/worldvault",
+      "description": "storing files inside your minecraft world",
+      "language": "Java",
+      "pushed_at": "2026-11-19T17:50:40Z",
+      "private": false,
+      "archived": false,
+      "size": 104,
+      "fork": false
+    },
+    {
+      "name": "goatbot",
+      "full_name": "GoatTech-42/goatbot",
+      "html_url": "https://github.com/GoatTech-42/goatbot",
+      "description": "all my bots for defector.hackclub.com",
+      "language": "JavaScript",
+      "pushed_at": "2026-11-18T07:16:01Z",
+      "private": false,
+      "archived": false,
+      "size": 57,
+      "fork": false
+    },
+    {
+      "name": "mc-headless",
+      "full_name": "GoatTech-42/mc-headless",
+      "html_url": "https://github.com/GoatTech-42/mc-headless",
+      "description": "used for the drcoconut smp to afk farms",
+      "language": "JavaScript",
+      "pushed_at": "2026-11-17T03:49:30Z",
+      "private": false,
+      "archived": false,
+      "size": 919,
+      "fork": false
+    },
+    {
+      "name": "burrow",
+      "full_name": "GoatTech-42/burrow",
+      "html_url": "https://github.com/GoatTech-42/burrow",
+      "description": "tunnel traffic thru an mc server",
+      "language": null,
+      "pushed_at": "2026-10-10T04:16:13Z",
+      "private": false,
+      "archived": false,
+      "size": 14,
+      "fork": false
+    },
+    {
+      "name": "goatpad-v1",
+      "full_name": "GoatTech-42/goatpad-v1",
+      "html_url": "https://github.com/GoatTech-42/goatpad-v1",
+      "description": "macropad for hc blueprint",
+      "language": "Python",
+      "pushed_at": "2026-01-06T00:02:34Z",
+      "private": false,
+      "archived": false,
+      "size": 1855,
+      "fork": false
+    },
+    {
+      "name": "goatexpansion",
+      "full_name": "GoatTech-42/goatexpansion",
+      "html_url": "https://github.com/GoatTech-42/goatexpansion",
+      "description": "just jars for the mod i made awhile ago",
+      "language": null,
+      "pushed_at": "2025-08-31T01:28:55Z",
+      "private": false,
+      "archived": false,
+      "size": 4025,
+      "fork": false
+    }
+  ]
+}

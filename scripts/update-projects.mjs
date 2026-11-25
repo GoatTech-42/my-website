@@ -1,0 +1,14 @@
+import {readFile,writeFile} from 'node:fs/promises';
+import {selectProjects,renderRows} from '../goattech/catalog.mjs';
+const response=await fetch('https://api.github.com/users/GoatTech-42/repos?per_page=100&sort=pushed&type=owner',{headers:{'User-Agent':'GoatTech-homepage'}});
+if(!response.ok)throw new Error(`GitHub inventory failed: ${response.status}`);
+const repos=await response.json();
+if(response.headers.get('link')?.includes('rel="next"'))throw new Error('Inventory needs pagination before refresh');
+const projects=selectProjects(repos);
+if(!projects.length)throw new Error('Refusing an empty project inventory');
+const file=new URL('../goattech/index.html',import.meta.url);
+const html=await readFile(file,'utf8');
+if((html.match(/<!-- catalog:start -->/g)||[]).length!==1 || (html.match(/<!-- catalog:end -->/g)||[]).length!==1)throw new Error('Expected exactly one catalog marker pair');
+await writeFile(file,html.replace(/<!-- catalog:start -->[\s\S]*?<!-- catalog:end -->/,'<!-- catalog:start -->\n'+renderRows(projects)+'\n<!-- catalog:end -->'));
+await writeFile(new URL('../goattech/projects.json',import.meta.url),JSON.stringify({checked_at:new Date().toISOString(),projects:projects.map(({name,full_name,html_url,description,language,pushed_at,private:priv,archived,size,fork})=>({name,full_name,html_url,description,language,pushed_at,private:priv,archived,size,fork}))},null,2)+'\n');
+console.log(`Generated ${projects.length} public projects`);
