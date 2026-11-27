@@ -132,6 +132,30 @@
       "archived": false,
       "size": 4025,
       "fork": false
+    },
+    {
+      "name": "goated-world-gen",
+      "full_name": "GoatTech-42/goated-world-gen",
+      "html_url": "https://github.com/GoatTech-42/goated-world-gen",
+      "description": "mc datapack that makes worldgen nicer (not started yet)",
+      "language": null,
+      "pushed_at": "2026-09-10T14:41:17Z",
+      "private": false,
+      "archived": false,
+      "size": 1,
+      "fork": false
+    },
+    {
+      "name": "NEBULA-V2",
+      "full_name": "GoatTech-42/NEBULA-V2",
+      "html_url": "https://github.com/GoatTech-42/NEBULA-V2",
+      "description": "WE'RE BACK AND EVEN BETTER",
+      "language": "CSS",
+      "pushed_at": "2026-04-28T01:01:58Z",
+      "private": false,
+      "archived": true,
+      "size": 890,
+      "fork": false
     }
   ]
 }
