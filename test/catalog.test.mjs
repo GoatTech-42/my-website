@@ -17,3 +17,11 @@ test('project descriptions are escaped, dates are factual, forks labelled and SV
 test('more excludes every featured project to prevent duplication',()=>{
  assert.deepEqual(selectProjects([repo('aqua'),repo('goattech-forge'),repo('tally'),repo('goattech-launcher'),repo('lichii')]).map(r=>r.name),['lichii']);
 });
+
+test('approved small and archived projects appear without admitting other small or archived repos',()=>{
+ const rows=selectProjects([repo('goated-world-gen',{size:1}),repo('NEBULA-V2',{archived:true}),repo('tiny',{size:1}),repo('retired',{archived:true}),repo('NEBULA-V2',{private:true,archived:true}),repo('goated-world-gen',{size:1,html_url:'https://evil.invalid/'})]);
+ assert.deepEqual(rows.map(r=>r.name),['goated-world-gen','NEBULA-V2']);
+ const html=renderRows(rows);
+ assert.ok(html.includes('href="https://github.com/GoatTech-42/NEBULA-V2"'));
+ assert.ok(html.includes('archived'));
+});
